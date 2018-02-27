@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.esieve.category.dao.CategoryDao">
+
+    <select id="getCategories" resultType="Category">
+        SELECT * FROM category
+    </select>
+
+    <select id="getCategoryByCategoryId" resultType="Category" parameterType="int">
+        SELECT * FROM category WHERE category_id=#{categoryId}
+    </select>
+
+    <insert id="insertCategory" parameterType="string">
+        INSERT INTO category VALUES (null,#{categoryName})
+    </insert>
+
+    <update id="updateCategory" parameterType="Category">
+        UPDATE category SET category_name=#{categoryName}
+        WHERE category_id=#{categoryId}
+    </update>
+
+    <delete id="deleteCategory" parameterType="int">
+        DELETE FROM category WHERE category_id=#{categoryId}
+    </delete>
+
+</mapper>
