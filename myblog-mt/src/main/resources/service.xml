@@ -48,13 +48,13 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="typeAliasesPackage" value="com.esieve"/>
-        <property name="mapperLocations" value="classpath:mapper/CategoryDao.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
         <!--todo-->
     </bean>
 
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
-        <property name="basePackage" value="com.esieve.category.dao"/>
+        <property name="basePackage" value="com.esieve.*.dao"/>
         <!--todo-->
     </bean>
 
