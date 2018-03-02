@@ -26,6 +26,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public OperationResult insertCategory(String categoryName) {
+        categoryDao.insertCategory(categoryName);
         return null;
     }
 
