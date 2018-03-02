@@ -1,8 +1,8 @@
 package com.esieve.category.bean;
 
 public class Category {
-    int categoryId;
-    String categoryName;
+    private int categoryId;
+    private String categoryName;
 
     public int getCategoryId() {
         return categoryId;

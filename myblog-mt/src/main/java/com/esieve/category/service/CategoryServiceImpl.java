@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-@Service
+@Service(timeout = 300, loadbalance = "leastactive")
 public class CategoryServiceImpl implements CategoryService {
 
     @Autowired
@@ -16,27 +16,54 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> getCategories() {
-        return null;
+        List<Category> categories = null;
+        categories = categoryDao.getCategories();
+        return categories;
     }
 
     @Override
     public Category getCategoryByCategoryId(int categoryId) {
-        return null;
+        Category category = null;
+        category = categoryDao.getCategoryByCategoryId(categoryId);
+        return category;
     }
 
     @Override
     public OperationResult insertCategory(String categoryName) {
-        categoryDao.insertCategory(categoryName);
-        return null;
+        int result = categoryDao.insertCategory(categoryName);
+
+        OperationResult operationResult = new OperationResult();
+        if (result == 1) {
+            operationResult.setSuccess(true);
+        } else {
+            operationResult.setSuccess(false);
+        }
+        return operationResult;
     }
 
     @Override
     public OperationResult updateCategory(Category category) {
-        return null;
+        int result = categoryDao.updateCategory(category);
+
+        OperationResult operationResult = new OperationResult();
+        if (result == 1) {
+            operationResult.setSuccess(true);
+        } else {
+            operationResult.setSuccess(false);
+        }
+        return operationResult;
     }
 
     @Override
     public OperationResult deleteCategory(int categoryId) {
-        return null;
+        int result = categoryDao.deleteCategory(categoryId);
+
+        OperationResult operationResult = new OperationResult();
+        if (result == 1) {
+            operationResult.setSuccess(true);
+        } else {
+            operationResult.setSuccess(false);
+        }
+        return operationResult;
     }
 }
