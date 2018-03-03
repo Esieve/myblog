@@ -14,7 +14,7 @@
     </select>
 
     <insert id="insertCategory" parameterType="string">
-        INSERT INTO category VALUES (null,#{categoryName})
+        INSERT INTO category VALUES (NULL ,#{categoryName})
     </insert>
 
     <update id="updateCategory" parameterType="Category">
