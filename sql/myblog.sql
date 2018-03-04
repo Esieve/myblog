@@ -32,7 +32,7 @@ CREATE TABLE article (
   COMMENT '最后更新日期',
   clicks       INT                  DEFAULT 0
   COMMENT '点击率',
-  image        VARCHAR(50) NOT NULL
+  image        VARCHAR(50)          DEFAULT NULL
   COMMENT '封面图片',
   FOREIGN KEY (category_id)
   REFERENCES category (category_id)
