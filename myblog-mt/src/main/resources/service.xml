@@ -48,7 +48,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="configLocation" value="classpath:mybatis-config.xml"/>
         <property name="typeAliasesPackage" value="com.esieve"/>
-        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <!--<property name="mapperLocations" value="classpath:mapper/*.xml"/>-->
         <!--todo-->
     </bean>
 
@@ -58,8 +58,7 @@
         <!--todo-->
     </bean>
 
-    <bean id="transactionManager"
-          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="dataSource" ref="dataSource"/>
     </bean>
 </beans>
