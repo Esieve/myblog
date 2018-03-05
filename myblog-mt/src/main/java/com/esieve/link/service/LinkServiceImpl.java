@@ -15,16 +15,12 @@ public class LinkServiceImpl implements LinkService {
 
     @Override
     public Link getLinkByLinkId(int linkId) {
-        Link link = null;
-        link = linkDao.getLinkByLinkId(linkId);
-        return link;
+        return linkDao.getLinkByLinkId(linkId);
     }
 
     @Override
     public List<Link> getLinks() {
-        List<Link> links = null;
-        links = linkDao.getLinks();
-        return links;
+        return linkDao.getLinks();
     }
 
     @Override

@@ -16,16 +16,12 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> getCategories() {
-        List<Category> categories = null;
-        categories = categoryDao.getCategories();
-        return categories;
+        return categoryDao.getCategories();
     }
 
     @Override
     public Category getCategoryByCategoryId(int categoryId) {
-        Category category = null;
-        category = categoryDao.getCategoryByCategoryId(categoryId);
-        return category;
+        return categoryDao.getCategoryByCategoryId(categoryId);
     }
 
     @Override
