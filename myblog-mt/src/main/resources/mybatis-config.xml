@@ -9,6 +9,6 @@
         <setting name="useColumnLabel" value="true"/>
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <setting name="autoMappingUnknownColumnBehavior" value="FAILING"/>
-        <setting name="logImpl" value="LOG4J"/>
+        <setting name="logImpl" value="SLF4J"/>
     </settings>
 </configuration>
