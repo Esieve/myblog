@@ -16,7 +16,7 @@ public class LinkDaoTest {
     @Autowired
     private LinkDao linkDao;
 
-    private int linkId = 1;
+    private int linkId = 4;
 
     @Test
     public void insertLink() {
@@ -30,6 +30,9 @@ public class LinkDaoTest {
         Link link = linkDao.getLinkByLinkId(linkId);
         Assert.assertNotNull(link);
         Assert.assertEquals("test", link.getLinkName());
+
+        link = linkDao.getLinkByLinkId(-1);
+        Assert.assertNull(link);
     }
 
     @Test
@@ -44,6 +47,9 @@ public class LinkDaoTest {
         Link link = new Link(linkId, "test", "test");
         int result = linkDao.updateLink(link);
         Assert.assertEquals(1, result);
+
+        result = linkDao.updateLink(null);
+        Assert.assertEquals(0, result);
     }
 
     @Test

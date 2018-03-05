@@ -1,8 +1,10 @@
 package com.esieve.user.dao;
 
 import com.esieve.user.bean.User;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
@@ -23,10 +25,10 @@ public interface UserDao {
     @Insert("INSERT INTO user VALUES (NULL,#{username},#{password},#{image})")
     int insertUser(User user);
 
-    @Insert("UPDATE user SET username=#{username}, password=#{password}, image=#{image} WHERE user_id=#{userId}")
+    @Update("UPDATE user SET username=#{username}, password=#{password}, image=#{image} WHERE user_id=#{userId}")
     int updateUser(User user);
 
-    @Insert("DELETE FROM user WHERE user_id=#{userId}")
+    @Delete("DELETE FROM user WHERE user_id=#{userId}")
     int deleteUser(int userId);
 
 }

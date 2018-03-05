@@ -17,7 +17,7 @@ public class CategoryDaoTest {
     @Autowired
     private CategoryDao categoryDao;
 
-    private int categoryId = 7;
+    private int categoryId = 12;
 
     @Test
     public void insertCategory() {
@@ -47,13 +47,20 @@ public class CategoryDaoTest {
         Category category = new Category();
         category.setCategoryId(categoryId);
         category.setCategoryName("test2");
+
         int result = categoryDao.updateCategory(category);
         Assert.assertEquals(1, result);
+
+        result = categoryDao.updateCategory(null);
+        Assert.assertEquals(0, result);
     }
 
     @Test
     public void deleteCategory() {
         int result = categoryDao.deleteCategory(categoryId);
         Assert.assertEquals(1, result);
+
+        result = categoryDao.deleteCategory(-1);
+        Assert.assertEquals(0, result);
     }
 }

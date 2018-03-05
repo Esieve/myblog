@@ -16,7 +16,7 @@ public class UserDaoTest {
     @Autowired
     private UserDao userDao;
 
-    private int userId = 1;
+    private int userId = 2;
 
     @Test
     public void insertUser() {
