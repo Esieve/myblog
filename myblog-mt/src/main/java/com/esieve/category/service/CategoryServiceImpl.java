@@ -4,12 +4,15 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.esieve.category.bean.Category;
 import com.esieve.category.dao.CategoryDao;
 import com.esieve.common.bean.OperationResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 @Service(timeout = 300, loadbalance = "leastactive")
 public class CategoryServiceImpl implements CategoryService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CategoryServiceImpl.class);
 
     @Autowired
     private CategoryDao categoryDao;
@@ -21,7 +24,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public Category getCategoryByCategoryId(int categoryId) {
-        return categoryDao.getCategoryByCategoryId(categoryId);
+        Category category = categoryDao.getCategoryByCategoryId(categoryId);
+        if (category == null) {
+            LOGGER.warn("get category error, categoryId {}", categoryId);
+        }
+        return category;
     }
 
     @Override
@@ -33,6 +40,7 @@ public class CategoryServiceImpl implements CategoryService {
             operationResult.setSuccess(true);
         } else {
             operationResult.setSuccess(false);
+            LOGGER.warn("insert category error, categoryName {}", categoryName);
         }
         return operationResult;
     }
@@ -46,6 +54,7 @@ public class CategoryServiceImpl implements CategoryService {
             operationResult.setSuccess(true);
         } else {
             operationResult.setSuccess(false);
+            LOGGER.warn("update category error, category {}", category);
         }
         return operationResult;
     }
@@ -59,6 +68,7 @@ public class CategoryServiceImpl implements CategoryService {
             operationResult.setSuccess(true);
         } else {
             operationResult.setSuccess(false);
+            LOGGER.warn("delete category error, categoryId {}", categoryId);
         }
         return operationResult;
     }

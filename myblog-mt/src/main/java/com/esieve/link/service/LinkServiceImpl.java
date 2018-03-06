@@ -4,18 +4,26 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.esieve.common.bean.OperationResult;
 import com.esieve.link.bean.Link;
 import com.esieve.link.dao.LinkDao;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 @Service(timeout = 300, loadbalance = "leastactive")
 public class LinkServiceImpl implements LinkService {
+    private static final Logger LOGGER = LoggerFactory.getLogger(LinkServiceImpl.class);
+
     @Autowired
     private LinkDao linkDao;
 
     @Override
     public Link getLinkByLinkId(int linkId) {
-        return linkDao.getLinkByLinkId(linkId);
+        Link link = linkDao.getLinkByLinkId(linkId);
+        if (link == null) {
+            LOGGER.warn("get link error, linkId {}", linkId);
+        }
+        return link;
     }
 
     @Override
@@ -32,6 +40,7 @@ public class LinkServiceImpl implements LinkService {
             operationResult.setSuccess(true);
         } else {
             operationResult.setSuccess(false);
+            LOGGER.warn("insert link error, link {}", link);
         }
         return operationResult;
     }
@@ -45,6 +54,7 @@ public class LinkServiceImpl implements LinkService {
             operationResult.setSuccess(true);
         } else {
             operationResult.setSuccess(false);
+            LOGGER.warn("update link error, link {}", link);
         }
         return operationResult;
     }
@@ -58,6 +68,7 @@ public class LinkServiceImpl implements LinkService {
             operationResult.setSuccess(true);
         } else {
             operationResult.setSuccess(false);
+            LOGGER.warn("delete link error, linkId {}", linkId);
         }
         return operationResult;
     }
