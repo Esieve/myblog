@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
         OperationResult operationResult = new OperationResult();
         if (result == null) {
             operationResult.setSuccess(false);
-            LOGGER.warn("check user error, user {}", user.toString());
+            LOGGER.warn("check user error, user {}", user);
         } else {
             operationResult.setSuccess(true);
         }
@@ -54,7 +54,7 @@ public class UserServiceImpl implements UserService {
             operationResult.setSuccess(true);
         } else {
             operationResult.setSuccess(false);
-            LOGGER.warn("insert user error, user {}", user.toString());
+            LOGGER.warn("insert user error, user {}", user);
         }
         return operationResult;
     }
@@ -68,7 +68,7 @@ public class UserServiceImpl implements UserService {
             operationResult.setSuccess(true);
         } else {
             operationResult.setSuccess(false);
-            LOGGER.warn("update user error, user {}", user.toString());
+            LOGGER.warn("update user error, user {}", user);
         }
         return operationResult;
     }
