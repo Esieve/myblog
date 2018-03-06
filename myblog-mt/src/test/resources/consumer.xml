@@ -12,4 +12,5 @@
 
     <dubbo:annotation package="com.esieve.link.service,
                                 com.esieve.category.service"/>
+    <dubbo:annotation package="com.esieve.user.service"/>
 </beans>

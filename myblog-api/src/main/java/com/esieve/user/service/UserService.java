@@ -10,7 +10,7 @@ public interface UserService {
 
     User getUserByUserId(int userId);
 
-    User getUserByUser(User user);
+    OperationResult checkUser(User user);
 
     OperationResult insertUser(User user);
 
