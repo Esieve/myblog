@@ -34,6 +34,8 @@ CREATE TABLE article (
   COMMENT '点击率',
   image        VARCHAR(50)          DEFAULT NULL
   COMMENT '封面图片',
+  is_about     TINYINT(1)           DEFAULT 0
+  COMMENT '0代表普通文章，1代表关于',
   FOREIGN KEY (category_id)
   REFERENCES category (category_id)
     ON DELETE SET NULL,
