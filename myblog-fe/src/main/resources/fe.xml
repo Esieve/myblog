@@ -2,6 +2,7 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans.xsd
  http://www.springframework.org/schema/mvc
@@ -31,5 +32,12 @@
             <bean class="com.esieve.interceptor.LoginInterceptor"></bean>
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <!--配置dubbo consumer-->
+    <dubbo:application name="myblog-consumer"/>
+
+    <dubbo:registry address="zookeeper://127.0.0.1:2181"/>
+
+    <dubbo:annotation package="com.esieve.controller"/>
 
 </beans>

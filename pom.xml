@@ -16,6 +16,7 @@
 
     <properties>
         <spring.version>4.3.14.RELEASE</spring.version>
+        <dubbo.version>2.6.0</dubbo.version>
     </properties>
 
     <dependencies>
@@ -95,6 +96,12 @@
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>24.0-jre</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>dubbo</artifactId>
+            <version>${dubbo.version}</version>
         </dependency>
     </dependencies>
 
