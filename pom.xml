@@ -11,6 +11,7 @@
     <modules>
         <module>myblog-mt</module>
         <module>myblog-api</module>
+        <module>myblog-fe</module>
     </modules>
 
     <properties>
