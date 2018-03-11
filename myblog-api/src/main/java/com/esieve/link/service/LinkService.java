@@ -6,9 +6,9 @@ import com.esieve.link.bean.Link;
 import java.util.List;
 
 public interface LinkService {
-    Link getLinkByLinkId(int linkId);
+    OperationResult<Link> getLinkByLinkId(int linkId);
 
-    List<Link> getLinks();
+    OperationResult<List<Link>> getLinks();
 
     OperationResult insertLink(Link link);
 

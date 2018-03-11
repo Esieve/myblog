@@ -18,17 +18,33 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryDao categoryDao;
 
     @Override
-    public List<Category> getCategories() {
-        return categoryDao.getCategories();
+    public OperationResult<List<Category>> getCategories() {
+        OperationResult<List<Category>> result = new OperationResult<>();
+
+        List<Category> categories = categoryDao.getCategories();
+        if (categories == null) {
+            result.setInfo("无类别列表");
+        } else {
+            result.setSuccess(true);
+            result.setData(categories);
+        }
+
+        return result;
     }
 
     @Override
-    public Category getCategoryByCategoryId(int categoryId) {
+    public OperationResult<Category> getCategoryByCategoryId(int categoryId) {
+        OperationResult<Category> result = new OperationResult<>();
+
         Category category = categoryDao.getCategoryByCategoryId(categoryId);
         if (category == null) {
             LOGGER.warn("get category error, categoryId {}", categoryId);
+            result.setInfo("未找到该类别");
+        } else {
+            result.setSuccess(true);
+            result.setData(category);
         }
-        return category;
+        return result;
     }
 
     @Override
@@ -38,9 +54,10 @@ public class CategoryServiceImpl implements CategoryService {
         OperationResult operationResult = new OperationResult();
         if (result == 1) {
             operationResult.setSuccess(true);
+            operationResult.setInfo("插入成功");
         } else {
-            operationResult.setSuccess(false);
             LOGGER.warn("insert category error, categoryName {}", categoryName);
+            operationResult.setInfo("插入失败");
         }
         return operationResult;
     }
@@ -52,9 +69,10 @@ public class CategoryServiceImpl implements CategoryService {
         OperationResult operationResult = new OperationResult();
         if (result == 1) {
             operationResult.setSuccess(true);
+            operationResult.setInfo("更新成功");
         } else {
-            operationResult.setSuccess(false);
             LOGGER.warn("update category error, category {}", category);
+            operationResult.setInfo("更新失败");
         }
         return operationResult;
     }
@@ -66,9 +84,10 @@ public class CategoryServiceImpl implements CategoryService {
         OperationResult operationResult = new OperationResult();
         if (result == 1) {
             operationResult.setSuccess(true);
+            operationResult.setInfo("删除成功");
         } else {
-            operationResult.setSuccess(false);
             LOGGER.warn("delete category error, categoryId {}", categoryId);
+            operationResult.setInfo("删除失败");
         }
         return operationResult;
     }

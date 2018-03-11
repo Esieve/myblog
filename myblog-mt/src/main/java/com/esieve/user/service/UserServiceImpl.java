@@ -18,29 +18,45 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public List<User> getUsers() {
-        return userDao.getUsers();
+    public OperationResult<List<User>> getUsers() {
+        OperationResult<List<User>> result = new OperationResult<>();
+
+        List<User> users = userDao.getUsers();
+        if (users == null) {
+            result.setInfo("无用户列表");
+        } else {
+            result.setSuccess(true);
+            result.setData(users);
+        }
+        return result;
     }
 
     @Override
-    public User getUserByUserId(int userId) {
+    public OperationResult<User> getUserByUserId(int userId) {
+        OperationResult<User> result = new OperationResult<>();
+
         User user = userDao.getUserByUserId(userId);
         if (user == null) {
             LOGGER.warn("get user error, userId {}", userId);
+            result.setInfo("未找到该用户");
+        } else {
+            result.setSuccess(true);
+            result.setData(user);
         }
-        return user;
+        return result;
     }
 
     @Override
-    public OperationResult checkUser(User user) {
+    public OperationResult<User> checkUser(User user) {
         User result = userDao.getUserByUser(user);
 
-        OperationResult operationResult = new OperationResult();
+        OperationResult<User> operationResult = new OperationResult();
         if (result == null) {
-            operationResult.setSuccess(false);
             LOGGER.warn("check user error, user {}", user);
+            operationResult.setInfo("用户名或密码错误");
         } else {
             operationResult.setSuccess(true);
+            operationResult.setData(user);
         }
         return operationResult;
     }
@@ -52,9 +68,10 @@ public class UserServiceImpl implements UserService {
         OperationResult operationResult = new OperationResult();
         if (result == 1) {
             operationResult.setSuccess(true);
+            operationResult.setInfo("插入成功");
         } else {
-            operationResult.setSuccess(false);
             LOGGER.warn("insert user error, user {}", user);
+            operationResult.setInfo("插入失败");
         }
         return operationResult;
     }
@@ -66,9 +83,10 @@ public class UserServiceImpl implements UserService {
         OperationResult operationResult = new OperationResult();
         if (result == 1) {
             operationResult.setSuccess(true);
+            operationResult.setInfo("更新成功");
         } else {
-            operationResult.setSuccess(false);
             LOGGER.warn("update user error, user {}", user);
+            operationResult.setInfo("更新失败");
         }
         return operationResult;
     }
@@ -80,9 +98,10 @@ public class UserServiceImpl implements UserService {
         OperationResult operationResult = new OperationResult();
         if (result == 1) {
             operationResult.setSuccess(true);
+            operationResult.setInfo("删除成功");
         } else {
-            operationResult.setSuccess(false);
             LOGGER.warn("delete user error, userId {}", userId);
+            operationResult.setInfo("删除失败");
         }
         return operationResult;
     }

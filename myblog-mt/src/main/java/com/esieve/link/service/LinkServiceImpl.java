@@ -18,17 +18,32 @@ public class LinkServiceImpl implements LinkService {
     private LinkDao linkDao;
 
     @Override
-    public Link getLinkByLinkId(int linkId) {
+    public OperationResult<Link> getLinkByLinkId(int linkId) {
+        OperationResult<Link> result = new OperationResult<>();
+
         Link link = linkDao.getLinkByLinkId(linkId);
         if (link == null) {
             LOGGER.warn("get link error, linkId {}", linkId);
+            result.setInfo("未找到该链接");
+        } else {
+            result.setSuccess(true);
+            result.setData(link);
         }
-        return link;
+        return result;
     }
 
     @Override
-    public List<Link> getLinks() {
-        return linkDao.getLinks();
+    public OperationResult<List<Link>> getLinks() {
+        OperationResult<List<Link>> result = new OperationResult<>();
+
+        List<Link> links = linkDao.getLinks();
+        if (links == null) {
+            result.setInfo("无链接列表");
+        } else {
+            result.setSuccess(true);
+            result.setData(links);
+        }
+        return result;
     }
 
     @Override
@@ -38,9 +53,10 @@ public class LinkServiceImpl implements LinkService {
         OperationResult operationResult = new OperationResult();
         if (result == 1) {
             operationResult.setSuccess(true);
+            operationResult.setInfo("插入成功");
         } else {
-            operationResult.setSuccess(false);
             LOGGER.warn("insert link error, link {}", link);
+            operationResult.setInfo("插入失败");
         }
         return operationResult;
     }
@@ -52,9 +68,10 @@ public class LinkServiceImpl implements LinkService {
         OperationResult operationResult = new OperationResult();
         if (result == 1) {
             operationResult.setSuccess(true);
+            operationResult.setInfo("更新成功");
         } else {
-            operationResult.setSuccess(false);
             LOGGER.warn("update link error, link {}", link);
+            operationResult.setInfo("更新失败");
         }
         return operationResult;
     }
@@ -66,9 +83,10 @@ public class LinkServiceImpl implements LinkService {
         OperationResult operationResult = new OperationResult();
         if (result == 1) {
             operationResult.setSuccess(true);
+            operationResult.setInfo("删除成功");
         } else {
-            operationResult.setSuccess(false);
             LOGGER.warn("delete link error, linkId {}", linkId);
+            operationResult.setInfo("删除失败");
         }
         return operationResult;
     }

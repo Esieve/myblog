@@ -6,11 +6,11 @@ import com.esieve.user.bean.User;
 import java.util.List;
 
 public interface UserService {
-    List<User> getUsers();
+    OperationResult<List<User>> getUsers();
 
-    User getUserByUserId(int userId);
+    OperationResult<User> getUserByUserId(int userId);
 
-    OperationResult checkUser(User user);
+    OperationResult<User> checkUser(User user);
 
     OperationResult insertUser(User user);
 
