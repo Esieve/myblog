@@ -9,8 +9,6 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.util.List;
-
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:service.xml", "classpath:consumer.xml"})
 public class UserServiceMainTest {
@@ -26,9 +24,8 @@ public class UserServiceMainTest {
         OperationResult result = userService.insertUser(user);
         Assert.assertTrue(result.isSuccess());
 
-        List<User> users = userService.getUsers();
-        Assert.assertNotNull(users);
-        Assert.assertEquals(1, users.size());
+        result = userService.getUsers();
+        Assert.assertNotNull(result.getData());
 
         result = userService.checkUser(user);
         Assert.assertTrue(result.isSuccess());
@@ -36,8 +33,8 @@ public class UserServiceMainTest {
         result = userService.updateUser(user);
         Assert.assertTrue(result.isSuccess());
 
-        user = userService.getUserByUserId(userId);
-        Assert.assertNotNull(user);
+        result = userService.getUserByUserId(userId);
+        Assert.assertNotNull(result.getData());
 
         result = userService.deleteUser(userId);
         Assert.assertTrue(result.isSuccess());
