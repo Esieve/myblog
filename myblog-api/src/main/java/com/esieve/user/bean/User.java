@@ -1,9 +1,11 @@
 package com.esieve.user.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by 77239 on 2017/3/28/0028.
  */
-public class User {
+public class User implements Serializable {
     private int userId;
     private String username;
     private String password;

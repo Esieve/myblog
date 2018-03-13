@@ -1,8 +1,9 @@
 package com.esieve.article.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Article {
+public class Article implements Serializable {
     private int articleId;
     private int categoryId;
     private int userId;

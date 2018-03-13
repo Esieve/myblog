@@ -1,6 +1,8 @@
 package com.esieve.common.bean;
 
-public class OperationResult<T> {
+import java.io.Serializable;
+
+public class OperationResult<T> implements Serializable {
 
     private boolean success;
     private String info;

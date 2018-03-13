@@ -1,9 +1,11 @@
 package com.esieve.link.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by 77239 on 2017/3/28/0028.
  */
-public class Link {
+public class Link implements Serializable {
     private int linkId;
     private String linkName;
     private String url;
