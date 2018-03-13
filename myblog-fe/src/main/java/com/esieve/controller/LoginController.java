@@ -40,13 +40,12 @@ public class LoginController {
         HttpSession session = request.getSession();
         User user = new User(request.getParameter("username"), MD5Util.encoderPassword(request.getParameter("password")));
         OperationResult<User> result = userService.checkUser(user);
-        if (result.isSuccess()) {
-            session.setAttribute("curUser", result.getData());
-            return "redirect:/manage";
-        } else {
+        if (result == null || result.isSuccess() == false) {
             attributes.addFlashAttribute("info", result.getInfo());
             return "redirect:/login";
+        } else {
+            session.setAttribute("curUser", result.getData());
+            return "redirect:/manage";
         }
     }
-
 }
