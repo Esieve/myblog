@@ -5,6 +5,7 @@ import com.esieve.common.bean.OperationResult;
 import com.esieve.user.bean.User;
 import com.esieve.user.service.UserService;
 import com.esieve.util.MD5Util;
+import com.google.common.base.Preconditions;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -40,12 +41,15 @@ public class LoginController {
         HttpSession session = request.getSession();
         User user = new User(request.getParameter("username"), MD5Util.encoderPassword(request.getParameter("password")));
         OperationResult<User> result = userService.checkUser(user);
-        if (result == null || result.isSuccess() == false) {
-            attributes.addFlashAttribute("info", result.getInfo());
-            return "redirect:/login";
-        } else {
+
+        Preconditions.checkNotNull(result);
+        if (result.isSuccess()) {
             session.setAttribute("curUser", result.getData());
             return "redirect:/manage";
+        } else {
+            attributes.addFlashAttribute("info", result.getInfo());
+            return "redirect:/login";
         }
     }
+
 }
