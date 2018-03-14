@@ -6,7 +6,7 @@ import com.esieve.common.bean.OperationResult;
 import java.util.List;
 
 public interface CategoryService {
-    OperationResult<List<Category>> getCategories();
+    List<Category> getCategories();
 
     OperationResult<Category> getCategoryByCategoryId(int categoryId);
 

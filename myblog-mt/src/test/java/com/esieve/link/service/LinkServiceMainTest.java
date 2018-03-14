@@ -9,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration({"classpath:service.xml", "classpath:consumer.xml"})
 public class LinkServiceMainTest {
@@ -22,8 +24,8 @@ public class LinkServiceMainTest {
         OperationResult result = linkService.insertLink(link);
         Assert.assertTrue(result.isSuccess());
 
-        result = linkService.getLinks();
-        Assert.assertNotNull(result.getData());
+        List<Link> links = linkService.getLinks();
+        Assert.assertNotNull(links);
 
         result = linkService.deleteLink(2);
         Assert.assertTrue(result.isSuccess());

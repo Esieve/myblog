@@ -1,7 +1,7 @@
 package com.esieve.article.dao;
 
 import com.esieve.article.bean.Article;
-import com.esieve.common.bean.OperationResult;
+import com.esieve.article.bean.Page;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
@@ -14,7 +14,7 @@ public interface ArticleDao {
     Article getAbout();
 
     @Update("UPDATE article SET content=#{content}, update_time=now() WHERE is_about = 1")
-    OperationResult updateAbout(String content);
+    int updateAbout(String content);
 
     Article getPreArticle(int articleId);
 
@@ -28,7 +28,7 @@ public interface ArticleDao {
 
     List<Article> getArticlesByKey(String key);
 
-    List<Article> getArticlesByRange(PageUtil pageUtil);
+    List<Article> getArticlesByRange(Page pageUtil);
 
     List<Article> getArticlesByClicks();
 
@@ -36,15 +36,16 @@ public interface ArticleDao {
 
     List<Article> getRecentArticlesTitle();
 
-    OperationResult updateArticle(Article article);
+    int updateArticle(Article article);
 
-    @Insert("INSERT INTO article VALUES (null,#{categoryId},1,#{title},#{content},#{publishTime},#{updateTime},0,#{image},0)")
-    OperationResult insertArticle(Article article); // todo userId
+    @Insert("INSERT INTO article VALUES (null,#{categoryId},#{userId},#{title},#{content},#{publishTime},#{updateTime},0,#{image},0)")
+    int insertArticle(Article article);
 
     @Delete("DELETE FROM article WHERE article_id = #{articleId}")
-    OperationResult deleteArticle(int articleId);
+    int deleteArticle(int articleId);
 
-    OperationResult addClicks(int articleId);
+    int addClicks(int articleId);
 
-    OperationResult countArticleNum();
+    @Select("SELECT COUNT(*) AS total FROM article WHERE is_about=0")
+    int countArticleNum();
 }

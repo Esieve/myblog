@@ -8,7 +8,7 @@ import java.util.List;
 public interface LinkService {
     OperationResult<Link> getLinkByLinkId(int linkId);
 
-    OperationResult<List<Link>> getLinks();
+    List<Link> getLinks();
 
     OperationResult insertLink(Link link);
 

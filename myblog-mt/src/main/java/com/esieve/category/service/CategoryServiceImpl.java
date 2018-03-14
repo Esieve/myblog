@@ -18,18 +18,8 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryDao categoryDao;
 
     @Override
-    public OperationResult<List<Category>> getCategories() {
-        OperationResult<List<Category>> result = new OperationResult<>();
-
-        List<Category> categories = categoryDao.getCategories();
-        if (categories == null) {
-            result.setInfo("无类别列表");
-        } else {
-            result.setSuccess(true);
-            result.setData(categories);
-        }
-
-        return result;
+    public List<Category> getCategories() {
+        return categoryDao.getCategories();
     }
 
     @Override

@@ -1,12 +1,15 @@
 package com.esieve.category.service;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.esieve.category.bean.Category;
 import com.esieve.common.bean.OperationResult;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -27,8 +30,8 @@ public class CategoryServiceMainTest {
         OperationResult result = categoryService.insertCategory("test");
         Assert.assertTrue(result.isSuccess());
 
-        result = categoryService.getCategories();
-        Assert.assertNotNull(result.getData());
+        List<Category> categories = categoryService.getCategories();
+        Assert.assertNotNull(categories);
 
         result = categoryService.deleteCategory(11);
         Assert.assertTrue(result.isSuccess());

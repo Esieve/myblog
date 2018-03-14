@@ -33,17 +33,8 @@ public class LinkServiceImpl implements LinkService {
     }
 
     @Override
-    public OperationResult<List<Link>> getLinks() {
-        OperationResult<List<Link>> result = new OperationResult<>();
-
-        List<Link> links = linkDao.getLinks();
-        if (links == null) {
-            result.setInfo("无链接列表");
-        } else {
-            result.setSuccess(true);
-            result.setData(links);
-        }
-        return result;
+    public List<Link> getLinks() {
+        return linkDao.getLinks();
     }
 
     @Override
