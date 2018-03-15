@@ -23,6 +23,13 @@ public class Article implements Serializable {
         this.title = title;
     }
 
+    public Article(int categoryId, String title, String content, String image) {
+        this.categoryId = categoryId;
+        this.title = title;
+        this.content = content;
+        this.image = image;
+    }
+
     public int getArticleId() {
         return articleId;
     }
