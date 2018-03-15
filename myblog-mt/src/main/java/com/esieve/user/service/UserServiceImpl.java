@@ -37,7 +37,7 @@ public class UserServiceImpl implements UserService {
 
         User user = userDao.getUserByUserId(userId);
         if (user == null) {
-            LOGGER.warn("get user error, userId {}", userId);
+            LOGGER.error("get user error, userId {}", userId);
             result.setInfo("未找到该用户");
         } else {
             result.setSuccess(true);
@@ -52,7 +52,7 @@ public class UserServiceImpl implements UserService {
 
         OperationResult<User> operationResult = new OperationResult();
         if (result == null) {
-            LOGGER.warn("check user error, user {}", user);
+            LOGGER.error("check user error, user {}", user);
             operationResult.setInfo("用户名或密码错误");
         } else {
             operationResult.setSuccess(true);
@@ -70,7 +70,7 @@ public class UserServiceImpl implements UserService {
             operationResult.setSuccess(true);
             operationResult.setInfo("插入成功");
         } else {
-            LOGGER.warn("insert user error, user {}", user);
+            LOGGER.error("insert user error, user {}", user);
             operationResult.setInfo("插入失败");
         }
         return operationResult;
@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService {
             operationResult.setSuccess(true);
             operationResult.setInfo("更新成功");
         } else {
-            LOGGER.warn("update user error, user {}", user);
+            LOGGER.error("update user error, user {}", user);
             operationResult.setInfo("更新失败");
         }
         return operationResult;
@@ -100,7 +100,7 @@ public class UserServiceImpl implements UserService {
             operationResult.setSuccess(true);
             operationResult.setInfo("删除成功");
         } else {
-            LOGGER.warn("delete user error, userId {}", userId);
+            LOGGER.error("delete user error, userId {}", userId);
             operationResult.setInfo("删除失败");
         }
         return operationResult;

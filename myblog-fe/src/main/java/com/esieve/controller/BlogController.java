@@ -120,7 +120,7 @@ public class BlogController {
     //文章详情页的展示
     @RequestMapping(value = "/blog/article/{articleId}", method = RequestMethod.GET)
     public String showArticleView(@PathVariable("articleId") int articleId, Model model, RedirectAttributes attributes) {
-        OperationResult<Article> result = articleService.getArticleById(articleId);
+        OperationResult<Article> result = articleService.getArticleByArticleId(articleId);
 
         Preconditions.checkNotNull(result);
 

@@ -15,6 +15,14 @@ public class Article implements Serializable {
     private String image;
     private boolean isAbout;
 
+    public Article() {
+    }
+
+    public Article(int articleId, String title) {
+        this.articleId = articleId;
+        this.title = title;
+    }
+
     public int getArticleId() {
         return articleId;
     }

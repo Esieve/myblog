@@ -19,7 +19,7 @@ public interface ArticleService {
 
     Article getNextArticle(int articleId);
 
-    OperationResult<Article> getArticleById(int articleId);
+    OperationResult<Article> getArticleByArticleId(int articleId);
 
     List<Article> getArticles();
 
@@ -31,7 +31,7 @@ public interface ArticleService {
 
     OperationResult updateArticle(Article article);
 
-    OperationResult saveArticle(Article article);
+    OperationResult insertArticle(Article article);
 
     OperationResult deleteArticle(int articleId);
 

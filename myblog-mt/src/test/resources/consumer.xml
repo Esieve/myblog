@@ -10,7 +10,8 @@
     <!-- 使用multicast广播注册中心暴露发现服务地址 -->
     <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181"/>
 
-    <dubbo:annotation package="com.esieve.link.service,
-                                com.esieve.category.service"/>
+    <dubbo:annotation package="com.esieve.link.service"/>
+    <dubbo:annotation package="com.esieve.category.service"/>
     <dubbo:annotation package="com.esieve.user.service"/>
+    <dubbo:annotation package="com.esieve.article.service"/>
 </beans>

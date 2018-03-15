@@ -23,7 +23,7 @@ public class LinkServiceImpl implements LinkService {
 
         Link link = linkDao.getLinkByLinkId(linkId);
         if (link == null) {
-            LOGGER.warn("get link error, linkId {}", linkId);
+            LOGGER.error("get link error, linkId {}", linkId);
             result.setInfo("未找到该链接");
         } else {
             result.setSuccess(true);
@@ -46,7 +46,7 @@ public class LinkServiceImpl implements LinkService {
             operationResult.setSuccess(true);
             operationResult.setInfo("插入成功");
         } else {
-            LOGGER.warn("insert link error, link {}", link);
+            LOGGER.error("insert link error, link {}", link);
             operationResult.setInfo("插入失败");
         }
         return operationResult;
@@ -61,7 +61,7 @@ public class LinkServiceImpl implements LinkService {
             operationResult.setSuccess(true);
             operationResult.setInfo("更新成功");
         } else {
-            LOGGER.warn("update link error, link {}", link);
+            LOGGER.error("update link error, link {}", link);
             operationResult.setInfo("更新失败");
         }
         return operationResult;
@@ -76,7 +76,7 @@ public class LinkServiceImpl implements LinkService {
             operationResult.setSuccess(true);
             operationResult.setInfo("删除成功");
         } else {
-            LOGGER.warn("delete link error, linkId {}", linkId);
+            LOGGER.error("delete link error, linkId {}", linkId);
             operationResult.setInfo("删除失败");
         }
         return operationResult;
