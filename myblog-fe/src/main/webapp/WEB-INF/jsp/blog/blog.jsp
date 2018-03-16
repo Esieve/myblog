@@ -2,7 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
-    <%@ include file="../common/head.jsp" %>
+    <%@ include file="/WEB-INF/jsp/common/head.jsp" %>
 </head>
 <body class="grey lighten-4">
 
@@ -33,7 +33,7 @@
     <div class="col l9 s12 m12">
         <div class="row ">
             <div class="col s7">
-                <%@ include file="../common/info.jsp" %>
+                <%@ include file="/WEB-INF/jsp/common/info.jsp" %>
                 <jsp:include page="${mainPage}"></jsp:include>
             </div>
 

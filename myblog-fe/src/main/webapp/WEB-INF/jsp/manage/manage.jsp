@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <%@ include file="../common/head.jsp" %>
+    <%@ include file="/WEB-INF/jsp/common/head.jsp" %>
 
 </head>
 <body class="grey lighten-4">
@@ -42,7 +42,7 @@
     <!--页面内容-->
     <div class="col l9 m12 s12">
         <div class="container">
-            <%@ include file="../common/info.jsp" %>
+            <%@ include file="/WEB-INF/jsp/common/info.jsp" %>
             <jsp:include page="${mainPage}"></jsp:include>
         </div>
     </div>

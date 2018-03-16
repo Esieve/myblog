@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ include file="../common/tag.jsp" %>
+<%@ include file="/WEB-INF/jsp/common/tag.jsp" %>
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
