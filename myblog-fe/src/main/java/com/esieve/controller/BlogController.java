@@ -13,6 +13,7 @@ import com.esieve.user.bean.User;
 import com.google.common.base.Preconditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -44,6 +45,9 @@ public class BlogController {
 
     @Reference
     private LinkService linkService;
+
+    @Value("${page.size}")
+    private int pageSize;
 
     @RequestMapping(method = RequestMethod.GET)
     public String showBlogView(HttpServletRequest request, Model model, @RequestParam(value = "page", required = false) String page,
@@ -83,8 +87,6 @@ public class BlogController {
     }
 
     private String genPagination(int totalNum, int curPage, String search) {
-        int pageSize = Integer.parseInt(System.getProperty("page.size"));
-
         int totalPage = totalNum % pageSize == 0 ? totalNum / pageSize : totalNum / pageSize + 1;
         StringBuffer pageCode = new StringBuffer();
         pageCode.append("<ul class=\"pagination\">");

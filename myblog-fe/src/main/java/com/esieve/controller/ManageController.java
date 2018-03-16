@@ -17,6 +17,7 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -52,8 +53,11 @@ public class ManageController {
     @Reference
     private UserService userService;
 
-    private String articleImagePath = System.getProperty("article.image.path");
-    private String userImagePath = System.getProperty("user.image.path");
+    @Value("${article.image.path}")
+    private String articleImagePath;
+
+    @Value("${user.image.path}")
+    private String userImagePath;
 
     @RequestMapping(method = RequestMethod.GET)
     public String showManageView(HttpServletRequest request, Model model) {
