@@ -1,9 +1,11 @@
 package com.esieve.article.bean;
 
+import java.io.Serializable;
+
 /**
  * Created by 77239 on 2017/2/19/0019.
  */
-public class Page {
+public class Page implements Serializable {
 
     private int page;
     private int pageSize;

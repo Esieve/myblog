@@ -30,8 +30,8 @@ import java.util.Optional;
 /**
  * Created by 张秦遥 on 2017/4/6/0006.
  */
-//@SuppressWarnings("Since15")
 @Controller
+@RequestMapping("/blog")
 public class BlogController {
 
     private final static Logger LOGGER = LoggerFactory.getLogger(BlogController.class);
@@ -45,7 +45,7 @@ public class BlogController {
     @Reference
     private LinkService linkService;
 
-    @RequestMapping(value = {"blog", "/"}, method = RequestMethod.GET)
+    @RequestMapping(method = RequestMethod.GET)
     public String showBlogView(HttpServletRequest request, Model model, @RequestParam(value = "page", required = false) String page,
                                @RequestParam(value = "search", required = false) String search) {
 
@@ -118,7 +118,7 @@ public class BlogController {
     }
 
     //文章详情页的展示
-    @RequestMapping(value = "/blog/article/{articleId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/article/{articleId}", method = RequestMethod.GET)
     public String showArticleView(@PathVariable("articleId") int articleId, Model model, RedirectAttributes attributes) {
         OperationResult<Article> result = articleService.getArticleByArticleId(articleId);
 
@@ -145,7 +145,7 @@ public class BlogController {
     }
 
     //类别列表的展示
-    @RequestMapping(value = {"/blog/category", "/blog/category/{categoryId}"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/category", "/category/{categoryId}"}, method = RequestMethod.GET)
     public String showCategoryView(@PathVariable("categoryId") Optional<Integer> categoryId, Model model) {
         Map<Integer, List<Article>> articlesList = new HashMap<>();
 
@@ -168,7 +168,7 @@ public class BlogController {
     }
 
     //归档列表展示 todo 按月份归档，增加分页
-    @RequestMapping(value = "/blog/archive", method = RequestMethod.GET)
+    @RequestMapping(value = "/archive", method = RequestMethod.GET)
     public String showArchiveView(Model model) {
         List<Article> articles = articleService.getArticles();
         model.addAttribute("articles", articles);
@@ -177,7 +177,7 @@ public class BlogController {
     }
 
     //消息页面的展示
-    @RequestMapping(value = "/blog/message", method = RequestMethod.GET)
+    @RequestMapping(value = "/message", method = RequestMethod.GET)
     public String showMessageView(Model model) {
 //        model.addAttribute("articleId", 0); todo remove?
         model.addAttribute("mainPage", "message.jsp");
@@ -185,7 +185,7 @@ public class BlogController {
     }
 
     //关于页面的展示
-    @RequestMapping(value = "/blog/about", method = RequestMethod.GET)
+    @RequestMapping(value = "/about", method = RequestMethod.GET)
     public String showAboutView(Model model) {
         Article about = articleService.getAbout();
         model.addAttribute("about", about);

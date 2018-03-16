@@ -36,7 +36,6 @@ import java.util.Optional;
 /**
  * Created by 77239 on 2017/4/4/0004.
  */
-//@SuppressWarnings("Since15")
 @Controller
 @RequestMapping("/manage")
 public class ManageController {
