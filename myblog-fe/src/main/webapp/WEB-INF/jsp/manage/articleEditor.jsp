@@ -7,7 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/common/tag.jsp" %>
-<script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
         $('select').material_select();
@@ -74,3 +73,11 @@
         </div>
     </div>
 </div>
+<script>
+    ClassicEditor
+        .create(document.querySelector('.ckeditor'))
+        .catch(error = > {
+        console.error(error);
+    } )
+    ;
+</script>
