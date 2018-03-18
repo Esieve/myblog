@@ -6,6 +6,7 @@ import com.esieve.user.bean.User;
 import com.esieve.user.service.UserService;
 import com.esieve.util.MD5Util;
 import com.google.common.base.Preconditions;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,6 +27,9 @@ public class LoginController {
     @Reference
     private UserService userService;
 
+    @Value("${user.image.path}")
+    private String userImagePath;
+
     @RequestMapping(method = {RequestMethod.GET})
     public String showLoginView(HttpSession session) {
         User user = (User) session.getAttribute("curUser");
@@ -44,7 +48,12 @@ public class LoginController {
 
         Preconditions.checkNotNull(result);
         if (result.isSuccess()) {
-            session.setAttribute("curUser", result.getData());
+            user = result.getData();
+            session.setAttribute("curUser", user);
+            session.setAttribute("userImage", userImagePath + user.getImage());
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("backgroundImage", userImagePath + user.getBackground());
+            session.setAttribute("biography", user.getBiography());
             return "redirect:/manage";
         } else {
             attributes.addFlashAttribute("info", result.getInfo());

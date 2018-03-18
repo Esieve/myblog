@@ -61,11 +61,6 @@ public class ManageController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String showManageView(HttpServletRequest request, Model model) {
-        //首页用户头像,未登录默认显示ted
-        //todo 未登录显示特殊头像
-        User user = (User) request.getSession().getAttribute("curUser");
-        request.getServletContext().setAttribute("userImage", "/images/user/" + (user == null ? "ted.jpg" : user.getImage()));
-
         model.addAttribute("mainPage", "manageView.jsp");
         return "manage/manage";
     }

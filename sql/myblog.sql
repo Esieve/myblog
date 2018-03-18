@@ -3,12 +3,16 @@ CREATE DATABASE myblog;
 USE myblog;
 
 CREATE TABLE user (
-  user_id  INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  user_id    INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
   #   user_type INT DEFAULT 0 COMMENT '0代表普通用户，1代表管理员',
-  username VARCHAR(20) NOT NULL UNIQUE,
-  password VARCHAR(50) NOT NULL,
-  image    VARCHAR(50)          DEFAULT NULL
-  COMMENT '头像'
+  username   VARCHAR(20) NOT NULL UNIQUE,
+  password   VARCHAR(50) NOT NULL,
+  image      VARCHAR(50)          DEFAULT NULL
+  COMMENT '头像',
+  background VARCHAR(50)          DEFAULT NULL
+  COMMENT '背景图片',
+  biography  VARCHAR(50)          DEFAULT NULL
+  COMMENT '个人简介'
 )
   ENGINE = INNODB
   DEFAULT CHARSET = UTF8;

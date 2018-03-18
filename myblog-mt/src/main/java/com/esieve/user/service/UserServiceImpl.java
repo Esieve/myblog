@@ -56,7 +56,7 @@ public class UserServiceImpl implements UserService {
             operationResult.setInfo("用户名或密码错误");
         } else {
             operationResult.setSuccess(true);
-            operationResult.setData(user);
+            operationResult.setData(result);
         }
         return operationResult;
     }

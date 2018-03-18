@@ -10,6 +10,8 @@ public class User implements Serializable {
     private String username;
     private String password;
     private String image;
+    private String background;
+    private String biography;
 
     public User() {
     }
@@ -64,6 +66,22 @@ public class User implements Serializable {
         this.image = image;
     }
 
+    public String getBackground() {
+        return background;
+    }
+
+    public void setBackground(String background) {
+        this.background = background;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -71,6 +89,8 @@ public class User implements Serializable {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", image='" + image + '\'' +
+                ", background='" + background + '\'' +
+                ", biography='" + biography + '\'' +
                 '}';
     }
 }

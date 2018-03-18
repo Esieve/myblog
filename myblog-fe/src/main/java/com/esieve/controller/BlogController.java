@@ -10,6 +10,7 @@ import com.esieve.common.bean.OperationResult;
 import com.esieve.link.bean.Link;
 import com.esieve.link.service.LinkService;
 import com.esieve.user.bean.User;
+import com.esieve.user.service.UserService;
 import com.google.common.base.Preconditions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -46,6 +48,9 @@ public class BlogController {
     @Reference
     private LinkService linkService;
 
+    @Reference
+    private UserService userService;
+
     @Value("${page.size}")
     private int pageSize;
 
@@ -63,14 +68,19 @@ public class BlogController {
         request.getServletContext().setAttribute("mostViewedArticles", mostViewedArticles);
         request.getServletContext().setAttribute("links", links);
 
-        //首页用户头像和用户名,未登录默认显示ted和tourist
-        User user = (User) request.getSession().getAttribute("curUser");
-        request.getSession().setAttribute("userImage", userImagePath + (user == null ? "ted.jpg" : user.getImage()));
-        request.getSession().setAttribute("username", (user == null ? "tourist" : user.getUsername()));
+        // if not login, use admin info
+        HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("curUser");
+        if (user == null) {
+            OperationResult<User> result = userService.getUserByUserId(1);
+            user = result.getData();
+            session.setAttribute("userImage", userImagePath + user.getImage());
+            session.setAttribute("username", user.getUsername());
+            session.setAttribute("backgroundImage", userImagePath + user.getBackground());
+            session.setAttribute("biography", user.getBiography());
+        }
 
-        // todo background image
-        request.getSession().setAttribute("backgroundImage", userImagePath + "mountain.jpg");
-
+        // pagination
         if (page == null || page == "") {
             page = "1";
         }

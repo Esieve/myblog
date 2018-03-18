@@ -10,7 +10,6 @@
     <!--侧栏-->
     <div class="col l3">
         <ul id="slide-out" class="sidenav sidenav-fixed">
-            `
             <li>
                 <div class="user-view">
                     <div class="background">
@@ -18,7 +17,7 @@
                     </div>
                     <a href=""><img class="circle hoverable" src="${userImage}" alt="${userImage}"></a>
                     <a href=""><span class="white-text name">${username}</span></a>
-                    <a href=""><span class="white-text email truncate">jdandturk@gmail.com</span></a>
+                    <a href=""><span class="white-text email truncate">${biography}</span></a>
                 </div>
             </li>
 

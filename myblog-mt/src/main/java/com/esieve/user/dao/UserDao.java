@@ -16,19 +16,19 @@ public interface UserDao {
     @Select("SELECT * FROM user")
     List<User> getUsers();
 
-    @Select("SELECT user_id,username,image FROM user WHERE user_id=#{userId}")
+    @Select("SELECT user_id,username,image,background,biography FROM user WHERE user_id=#{userId}")
     User getUserByUserId(int userId);
 
-    @Select("SELECT user_id,username,image FROM user WHERE username=#{username} AND password=#{password}")
+    @Select("SELECT user_id,username,image,background,biography FROM user WHERE username=#{username} AND password=#{password}")
     User getUserByUser(User user);
 
-    @Insert("INSERT INTO user VALUES (NULL,#{username},#{password},#{image})")
+    @Insert("INSERT INTO user VALUES (NULL,#{username},#{password},#{image},#{background},#{biography})")
     int insertUser(User user);
 
-    @Update("UPDATE user SET username=#{username}, password=#{password}, image=#{image} WHERE user_id=#{userId}")
+    @Update("UPDATE user SET username=#{username}, password=#{password}, image=#{image}, background=#{background}, biography=#{biography} WHERE user_id=#{userId}")
     int updateUser(User user);
 
-    @Delete("DELETE FROM user WHERE user_id=#{userId}")
+    @Delete("DELETE FROM user WHERE user_id=#{userId} and user_id!=1")
     int deleteUser(int userId);
 
 }
