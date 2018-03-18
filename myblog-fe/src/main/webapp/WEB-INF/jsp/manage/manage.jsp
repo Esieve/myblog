@@ -16,7 +16,7 @@
 <div class="row">
     <!--侧栏-->
     <div class="col l3">
-        <ul id="slide-out" class="side-nav fixed">
+        <ul id="slide-out" class="sidenav sidenav-fixed">
             <li style="margin-top: 30px;margin-bottom: 30px">
                 <div class="center container">
                     <a href="/manage">
@@ -35,7 +35,7 @@
             <li><a href="/manage/quit" class="waves-effect waves-green btn orange hoverable"><i
                     class="material-icons left">person</i>退出登录</a></li>
         </ul>
-        <a href="" data-activates="slide-out" class="button-collapse grey-text"><i
+        <a href="" data-target="slide-out" class="sidenav-trigger grey-text"><i
                 class="material-icons medium">menu</i></a>
     </div>
 
@@ -62,6 +62,8 @@
         });
     }
 
-    $(".button-collapse").sideNav();
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    });
 </script>
 </html>
