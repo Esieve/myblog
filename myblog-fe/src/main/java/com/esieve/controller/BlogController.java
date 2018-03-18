@@ -63,10 +63,13 @@ public class BlogController {
         request.getServletContext().setAttribute("mostViewedArticles", mostViewedArticles);
         request.getServletContext().setAttribute("links", links);
 
-        //首页用户头像,未登录默认显示ted
-        //todo 未登录显示特殊头像
+        //首页用户头像和用户名,未登录默认显示ted和tourist
         User user = (User) request.getSession().getAttribute("curUser");
         request.getSession().setAttribute("userImage", userImagePath + (user == null ? "ted.jpg" : user.getImage()));
+        request.getSession().setAttribute("username", (user == null ? "tourist" : user.getUsername()));
+
+        // todo background image
+        request.getSession().setAttribute("backgroundImage", userImagePath + "mountain.jpg");
 
         if (page == null || page == "") {
             page = "1";

@@ -17,23 +17,30 @@
     <!--侧栏-->
     <div class="col l3">
         <ul id="slide-out" class="sidenav sidenav-fixed">
-            <li style="margin-top: 30px;margin-bottom: 30px">
-                <div class="center container">
-                    <a href="/manage">
-                        <img src="${userImage}" alt="${userImage}"
-                             class="circle responsive-img brand-logo hoverable z-depth-3">
-                    </a>
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="${backgroundImage}">
+                    </div>
+                    <a href=""><img class="circle hoverable" src="${userImage}" alt="${userImage}"></a>
+                    <a href=""><span class="white-text name">${username}</span></a>
+                    <a href=""><span class="white-text email">jdandturk@gmail.com</span></a>
                 </div>
             </li>
-            <li><h5 class="center-align">Esieve's Blog Monitor</h5></li>
+
             <li><a href="/manage/article" class="grey-text"><i class="material-icons left">border_color</i>文章</a></li>
             <li><a href="/manage/category" class="grey-text"><i class="material-icons left">view_list</i>分类</a></li>
             <li><a href="/manage/link" class="grey-text"><i class="material-icons left">open_in_browser</i>链接</a></li>
             <li><a href="/manage/image" class="grey-text"><i class="material-icons left">photo</i>图片</a></li>
             <li><a href="/manage/user" class="grey-text"><i class="material-icons left">account_circle</i>用户</a></li>
             <li><a href="/manage/about" class="grey-text"><i class="material-icons left">error</i>关于</a></li>
-            <li><a href="/manage/quit" class="waves-effect waves-green btn orange hoverable"><i
-                    class="material-icons left">person</i>退出登录</a></li>
+
+            <li>
+                <div class="divider"></div>
+            </li>
+
+            <li><a href="/manage/quit" class="waves-effect waves-green"><i
+                    class="material-icons">person</i>退出登录</a></li>
         </ul>
         <a href="" data-target="slide-out" class="sidenav-trigger grey-text"><i
                 class="material-icons medium">menu</i></a>

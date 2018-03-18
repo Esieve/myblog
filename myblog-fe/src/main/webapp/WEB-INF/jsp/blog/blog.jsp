@@ -10,20 +10,30 @@
     <!--侧栏-->
     <div class="col l3">
         <ul id="slide-out" class="sidenav sidenav-fixed">
-            <li style="margin-top: 30px;margin-bottom: 30px">
-                <div class="center container">
-                    <a href="/login">
-                        <img src="${userImage}" alt="${userImage}"
-                             class="circle responsive-img brand-logo hoverable z-depth-3">
-                    </a>
+            `
+            <li>
+                <div class="user-view">
+                    <div class="background">
+                        <img src="${backgroundImage}">
+                    </div>
+                    <a href=""><img class="circle hoverable" src="${userImage}" alt="${userImage}"></a>
+                    <a href=""><span class="white-text name">${username}</span></a>
+                    <a href=""><span class="white-text email truncate">jdandturk@gmail.com</span></a>
                 </div>
             </li>
-            <li><h5 class="center-align">Esieve's Blog</h5></li>
+
             <li><a href="/blog" class="grey-text"><i class="material-icons left">home</i>首页</a></li>
             <li><a href="/blog/category" class="grey-text"><i class="material-icons left">view_list</i>分类</a></li>
             <li><a href="/blog/archive" class="grey-text"><i class="material-icons left">folder</i>归档</a></li>
             <li><a href="/blog/message" class="grey-text"><i class="material-icons left">message</i>留言</a></li>
             <li><a href="/blog/about" class="grey-text"><i class="material-icons left">error</i>关于</a></li>
+
+            <li>
+                <div class="divider"></div>
+            </li>
+
+            <li><a href="/login" class="waves-effect waves-green"><i
+                    class="material-icons">person</i>登录</a></li>
         </ul>
         <a href="" data-target="slide-out" class="sidenav-trigger grey-text"><i
                 class="material-icons medium">menu</i></a>
