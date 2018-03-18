@@ -31,7 +31,7 @@
                 <div class="divider"></div>
             </li>
 
-            <li><a href="/login" class="waves-effect waves-green"><i
+            <li><a href="/login" class="waves-effect waves-green grey-text"><i
                     class="material-icons">person</i>登录</a></li>
         </ul>
         <a href="" data-target="slide-out" class="sidenav-trigger grey-text"><i

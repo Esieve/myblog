@@ -39,8 +39,10 @@
                 <div class="divider"></div>
             </li>
 
-            <li><a href="/manage/quit" class="waves-effect waves-green"><i
-                    class="material-icons">person</i>退出登录</a></li>
+            <li><a href="/blog" class="waves-effect waves-green grey-text">
+                <i class="material-icons">home</i>回到主页</a></li>
+            <li><a href="/manage/quit" class="waves-effect waves-green grey-text">
+                <i class="material-icons">person</i>退出登录</a></li>
         </ul>
         <a href="" data-target="slide-out" class="sidenav-trigger grey-text"><i
                 class="material-icons medium">menu</i></a>

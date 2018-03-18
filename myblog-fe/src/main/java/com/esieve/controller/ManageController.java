@@ -59,12 +59,6 @@ public class ManageController {
     @Value("${user.image.path}")
     private String userImagePath;
 
-    @RequestMapping(method = RequestMethod.GET)
-    public String showManageView(HttpServletRequest request, Model model) {
-        model.addAttribute("mainPage", "manageView.jsp");
-        return "manage/manage";
-    }
-
     //对文章的管理
     @RequestMapping(value = "/article", method = RequestMethod.GET)
     public String showArticleList(Model model) {

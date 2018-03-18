@@ -34,7 +34,7 @@ public class LoginController {
     public String showLoginView(HttpSession session) {
         User user = (User) session.getAttribute("curUser");
         if (user != null) {
-            return "redirect:/manage";
+            return "redirect:/manage/article";
         } else {
             return "login/login";
         }
@@ -54,7 +54,7 @@ public class LoginController {
             session.setAttribute("username", user.getUsername());
             session.setAttribute("backgroundImage", userImagePath + user.getBackground());
             session.setAttribute("biography", user.getBiography());
-            return "redirect:/manage";
+            return "redirect:/manage/article";
         } else {
             attributes.addFlashAttribute("info", result.getInfo());
             return "redirect:/login";
