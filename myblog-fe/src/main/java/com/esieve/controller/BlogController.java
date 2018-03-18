@@ -49,6 +49,9 @@ public class BlogController {
     @Value("${page.size}")
     private int pageSize;
 
+    @Value("${user.image.path}")
+    private String userImagePath;
+
     @RequestMapping(method = RequestMethod.GET)
     public String showBlogView(HttpServletRequest request, Model model, @RequestParam(value = "page", required = false) String page,
                                @RequestParam(value = "search", required = false) String search) {
@@ -63,7 +66,7 @@ public class BlogController {
         //首页用户头像,未登录默认显示ted
         //todo 未登录显示特殊头像
         User user = (User) request.getSession().getAttribute("curUser");
-        request.getServletContext().setAttribute("userImage", "/images/user/" + (user == null ? "ted.jpg" : user.getImage()));
+        request.getSession().setAttribute("userImage", userImagePath + (user == null ? "ted.jpg" : user.getImage()));
 
         if (page == null || page == "") {
             page = "1";
