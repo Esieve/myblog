@@ -46,7 +46,7 @@
             <form id="loginForm" method="post" action="/manage/user/save/${user.userId}" onsubmit="return check()">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
-                    <input id="username" name="username" type="text" class="validate">
+                    <input id="username" name="username" type="text" class="validate " value="${user.username}">
                     <label for="username">用户名</label>
                 </div>
                 <br><br><br><br>
@@ -67,8 +67,8 @@
 
                 <div class="input-field col s6">
                     <i class="material-icons prefix">short_text</i>
-                    <input id="biography" name="biography" type="text" class="validate">
-                    <label for="username">个人简介</label>
+                    <input id="biography" name="biography" type="text" class="validate" value="${user.biography}">
+                    <label for="biography">个人简介</label>
                 </div>
                 <br><br><br><br>
 
