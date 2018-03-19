@@ -7,29 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/common/tag.jsp" %>
-<script type="text/javascript">
-    function check() {
-        var title = document.getElementById("title").value;
-        var content = CKEDITOR.instances.content.getData();
-        var category = document.getElementById("categoryId").value;
-        if (title == null || title == "") {
-            $("#info").text("标题不能为空！");
-            showErrorInfo();
-            return false;
-        }
-        if (content == null || content == "") {
-            $("#info").text("内容不能为空！");
-            showErrorInfo();
-            return false;
-        }
-        if (category == null || category == "") {
-            $("#info").text("类别不能为空！");
-            showErrorInfo();
-            return false;
-        }
-        return true;
-    }
-</script>
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
@@ -82,4 +59,21 @@
     $(document).ready(function(){
         $('select').formSelect();
     });
+
+    function check() {
+        var title = document.getElementById("title").value;
+        var category = document.getElementById("categoryId").value;
+        if (title == null || title == "") {
+            $("#info").text("标题不能为空！");
+            showErrorInfo();
+            return false;
+        }
+
+        if (category == null || category == "") {
+            $("#info").text("类别不能为空！");
+            showErrorInfo();
+            return false;
+        }
+        return true;
+    }
 </script>

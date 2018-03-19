@@ -6,17 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<script type="text/javascript">
-    function check() {
-        var content = CKEDITOR.instances.content.getData();
-        if (content == null || content == "") {
-            $("#info").text("内容不能为空！");
-            showErrorInfo();
-            return false;
-        }
-        return true;
-    }
-</script>
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
