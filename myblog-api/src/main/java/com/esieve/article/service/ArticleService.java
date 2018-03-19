@@ -38,4 +38,6 @@ public interface ArticleService {
     OperationResult addClicks(int articleId);
 
     int countArticleNum();
+
+    int countArticleNumByCategoryId(int categoryId);
 }

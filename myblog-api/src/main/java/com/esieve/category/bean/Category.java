@@ -5,6 +5,7 @@ import java.io.Serializable;
 public class Category implements Serializable {
     private int categoryId;
     private String categoryName;
+    private int articleNum;
 
     public Category() {
     }
@@ -30,11 +31,20 @@ public class Category implements Serializable {
         this.categoryName = categoryName;
     }
 
+    public int getArticleNum() {
+        return articleNum;
+    }
+
+    public void setArticleNum(int articleNum) {
+        this.articleNum = articleNum;
+    }
+
     @Override
     public String toString() {
         return "Category{" +
                 "categoryId=" + categoryId +
                 ", categoryName='" + categoryName + '\'' +
+                ", articleNum=" + articleNum +
                 '}';
     }
 }

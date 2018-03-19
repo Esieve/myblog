@@ -124,6 +124,10 @@ public class ManageController {
     @RequestMapping(value = "/category", method = RequestMethod.GET)
     public String showCategoryList(Model model) {
         List<Category> categories = categoryService.getCategories();
+        for (Category category : categories) {
+            category.setArticleNum(articleService.countArticleNumByCategoryId(category.getCategoryId()));
+        }
+
         model.addAttribute("categories", categories);
         model.addAttribute("mainPage", "category.jsp");
         return "manage/manage";

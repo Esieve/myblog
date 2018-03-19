@@ -171,6 +171,8 @@ public class BlogController {
         for (Category category : categories) {
             List<Article> articles = articleService.getArticlesByCategoryId(category.getCategoryId());
             articlesList.put(category.getCategoryId(), articles);
+
+            category.setArticleNum(articles.size());
         }
 
         if (categoryId.isPresent()) {

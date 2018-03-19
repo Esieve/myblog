@@ -60,4 +60,7 @@ public interface ArticleDao {
 
     @Select("SELECT COUNT(*) AS total FROM article WHERE is_about=0")
     int countArticleNum();
+
+    @Select("SELECT COUNT(*) AS total FROM article WHERE is_about=0 AND category_id=#{categoryId}")
+    int countArticleNumByCategoryId(int categoryId);
 }

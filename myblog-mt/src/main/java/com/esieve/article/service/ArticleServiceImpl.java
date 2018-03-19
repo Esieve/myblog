@@ -173,4 +173,9 @@ public class ArticleServiceImpl implements ArticleService {
     public int countArticleNum() {
         return articleDao.countArticleNum();
     }
+
+    @Override
+    public int countArticleNumByCategoryId(int categoryId) {
+        return articleDao.countArticleNumByCategoryId(categoryId);
+    }
 }
