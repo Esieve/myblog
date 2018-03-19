@@ -8,10 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/common/tag.jsp" %>
 <script type="text/javascript">
-    $(document).ready(function () {
-        $('select').material_select();
-    });
-
     function check() {
         var title = document.getElementById("title").value;
         var content = CKEDITOR.instances.content.getData();
@@ -79,4 +75,8 @@
         .catch( error => {
         console.error( error );
     } );
+
+    $(document).ready(function(){
+        $('select').formSelect();
+    });
 </script>
