@@ -315,15 +315,17 @@ public class ManageController {
     @RequestMapping(value = {"/user/save", "/user/save/{userId}"}, method = RequestMethod.POST)
     public String saveUser(@PathVariable("userId") Optional<Integer> userId, HttpServletRequest request, RedirectAttributes attributes) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String password = MD5Util.encoderPassword(request.getParameter("password"));
         String image = request.getParameter("image");
+        String background = request.getParameter("background");
+        String biography = request.getParameter("biography");
 
         OperationResult result;
 
         if (userId.isPresent()) {
-            result = userService.updateUser(new User(userId.get(), username, MD5Util.encoderPassword(password), image));
+            result = userService.updateUser(new User(userId.get(), username, password, image, background, biography));
         } else {
-            result = userService.insertUser(new User(username, MD5Util.encoderPassword(password), image));
+            result = userService.insertUser(new User(username, password, image, background, biography));
         }
         attributes.addFlashAttribute("info", result.getInfo());
         return "redirect:/manage/user";

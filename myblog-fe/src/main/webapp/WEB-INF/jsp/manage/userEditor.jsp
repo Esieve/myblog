@@ -50,29 +50,50 @@
                     <label for="username">用户名</label>
                 </div>
                 <br><br><br><br>
+
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lock</i>
                     <input id="password" name="password" type="password" class="validate">
                     <label for="password">密码</label>
                 </div>
                 <br><br><br><br>
+
                 <div class="input-field col s6">
                     <i class="material-icons prefix">lock_outline</i>
                     <input id="confirmPassword" name="confirmPassword" type="password" class="validate">
                     <label for="password">确认密码</label>
                 </div>
                 <br><br><br><br>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">short_text</i>
+                    <input id="biography" name="biography" type="text" class="validate">
+                    <label for="username">个人简介</label>
+                </div>
+                <br><br><br><br>
+
                 <div class="input-field col s6">
                     <i class="material-icons prefix">portrait</i>
                     <select id="image" name="image" class="icons">
                         <option value="" disabled selected>头像</option>
                         <c:forEach var="image" items="${images}">
-                            <option value="${image}" data-icon="/images/user/${image}" class="circle"
-                                    }>${image}</option>
+                            <option value="${image}" data-icon="/images/user/${image}" }>${image}</option>
                         </c:forEach>
                     </select>
                 </div>
                 <br><br><br><br>
+
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">photo</i>
+                    <select id="background" name="background" class="icons">
+                        <option value="" disabled selected>背景图片</option>
+                        <c:forEach var="image" items="${images}">
+                            <option value="${image}" data-icon="/images/user/${image}" }>${image}</option>
+                        </c:forEach>
+                    </select>
+                </div>
+                <br><br><br><br>
+
                 <div class="center-align">
                     <button class="btn waves-effect waves-light hoverable orange" type="submit" name="action">注册
                         <i class="material-icons right">send</i>

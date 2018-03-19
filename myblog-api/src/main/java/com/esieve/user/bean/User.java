@@ -21,17 +21,21 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    public User(String username, String password, String image) {
+    public User(String username, String password, String image, String background, String biography) {
         this.username = username;
         this.password = password;
         this.image = image;
+        this.background = background;
+        this.biography = biography;
     }
 
-    public User(int userId, String username, String password, String image) {
+    public User(int userId, String username, String password, String image, String background, String biography) {
         this.userId = userId;
         this.username = username;
         this.password = password;
         this.image = image;
+        this.background = background;
+        this.biography = biography;
     }
 
     public int getUserId() {

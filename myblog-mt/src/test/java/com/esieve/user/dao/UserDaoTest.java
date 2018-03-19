@@ -56,7 +56,7 @@ public class UserDaoTest {
 
     @Test
     public void updateUser() {
-        User user = new User(userId, "test", "test", "test");
+        User user = new User(userId, "test", "test", "test", "test", "test");
         int result = userDao.updateUser(user);
         Assert.assertEquals(1, result);
 
