@@ -6,7 +6,7 @@ import com.esieve.user.bean.User;
 import java.util.List;
 
 public interface UserService {
-    OperationResult<List<User>> getUsers();
+    List<User> getUsers();
 
     OperationResult<User> getUserByUserId(int userId);
 

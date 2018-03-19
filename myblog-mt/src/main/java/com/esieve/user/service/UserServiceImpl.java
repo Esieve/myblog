@@ -18,17 +18,8 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public OperationResult<List<User>> getUsers() {
-        OperationResult<List<User>> result = new OperationResult<>();
-
-        List<User> users = userDao.getUsers();
-        if (users == null) {
-            result.setInfo("无用户列表");
-        } else {
-            result.setSuccess(true);
-            result.setData(users);
-        }
-        return result;
+    public List<User> getUsers() {
+        return userDao.getUsers();
     }
 
     @Override
