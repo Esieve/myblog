@@ -44,21 +44,24 @@
     <div class="col s12">
         <div class="card-panel">
             <form id="loginForm" method="post" action="/manage/user/save/${user.userId}" onsubmit="return check()">
-                <div class="input-field">
+                <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
                     <input id="username" name="username" type="text" class="validate">
                     <label for="username">用户名</label>
                 </div>
-                <div class="input-field">
+                <br><br><br><br>
+                <div class="input-field col s6">
                     <i class="material-icons prefix">lock</i>
                     <input id="password" name="password" type="password" class="validate">
                     <label for="password">密码</label>
                 </div>
-                <div class="input-field">
+                <br><br><br><br>
+                <div class="input-field col s6">
                     <i class="material-icons prefix">lock_outline</i>
                     <input id="confirmPassword" name="confirmPassword" type="password" class="validate">
                     <label for="password">确认密码</label>
                 </div>
+                <br><br><br><br>
                 <div class="input-field col s6">
                     <i class="material-icons prefix">portrait</i>
                     <select id="image" name="image" class="icons">

@@ -35,11 +35,13 @@
         <div class="card-panel">
             <form action="/manage/article/save/${article.articleId}" method="post" onsubmit="return check()">
                 <div class="input-field col s6">
+                    <i class="material-icons prefix">title</i>
                     <input id="title" name="title" type="text" class="validate" value="${article.title}">
-                    <label for="title"><i class="material-icons left">title</i>标题</label>
+                    <label for="title">标题</label>
                 </div>
                 <br><br><br><br>
                 <div class="input-field col s6">
+                    <i class="material-icons prefix">view_list</i>
                     <select id="categoryId" name="categoryId">
                         <option value="" disabled selected>类别</option>
                         <c:forEach var="category" items="${categories}">
@@ -51,6 +53,7 @@
                 </div>
                 <br><br><br><br>
                 <div class="input-field col s6">
+                    <i class="material-icons prefix">add_a_photo</i>
                     <select id="image" name="image" class="icons">
                         <option value="" disabled selected>图片</option>
                         <c:forEach var="image" items="${images}">
