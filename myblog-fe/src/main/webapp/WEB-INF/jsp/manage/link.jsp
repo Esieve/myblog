@@ -7,6 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script type="text/javascript">
+    function check() {
+        if(confirm("确定要删除这个链接吗？")){
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
@@ -28,7 +37,7 @@
                             <a href="/manage/link/modify/${link.linkId}"
                                class="waves-effect waves-light btn green hoverable">修改</a>
                             <a class="waves-effect waves-light btn red hoverable"
-                               href="/manage/link/delete/${link.linkId}">删除</a>
+                               href="/manage/link/delete/${link.linkId}" onclick="return check()">删除</a>
                         </td>
                     </tr>
                 </c:forEach>

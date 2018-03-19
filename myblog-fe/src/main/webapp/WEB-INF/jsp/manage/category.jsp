@@ -7,13 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%--<script type="text/javascript">--%>
-<%--function deleteCategory(id) {--%>
-<%--if(confirm("您确定要删除这个类别吗？")){--%>
-<%--window.location="categoryManage?action=delete&categoryId="+categoryId;--%>
-<%--}--%>
-<%--}--%>
-<%--</script>--%>
+<script type="text/javascript">
+    function check() {
+        if(confirm("确定要删除这个类别吗？")){
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
@@ -35,7 +37,7 @@
                             <a href="/manage/category/modify/${category.categoryId}"
                                class="waves-effect waves-light btn green hoverable">修改</a>
                             <a class="waves-effect waves-light btn red hoverable"
-                               href="/manage/category/delete/${category.categoryId}">删除</a>
+                               href="/manage/category/delete/${category.categoryId}" onclick="return check()">删除</a>
                         </td>
                     </tr>
                 </c:forEach>

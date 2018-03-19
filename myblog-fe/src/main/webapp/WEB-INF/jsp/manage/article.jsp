@@ -7,6 +7,15 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/common/tag.jsp" %>
+<script type="text/javascript">
+    function check() {
+        if(confirm("确定要删除这篇文章吗？")){
+            return true;
+        } else {
+            return false;
+        }
+    }
+</script>
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
@@ -32,7 +41,7 @@
                                     <a href="/manage/article/modify/${article.articleId}"
                                        class="waves-effect waves-light btn green hoverable">修改</a>
                                     <a class="waves-effect waves-light btn red hoverable"
-                                       href="/manage/article/delete/${article.articleId}">删除</a>
+                                       href="/manage/article/delete/${article.articleId}" onclick="return check()">删除</a>
                                 </div>
                             </div>
                         </div>
