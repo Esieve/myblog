@@ -94,11 +94,7 @@
                 </div>
                 <br><br><br><br>
 
-                <div class="center-align">
-                    <button class="btn waves-effect waves-light hoverable orange" type="submit" name="action">注册
-                        <i class="material-icons right">send</i>
-                    </button>
-                </div>
+                <button class="btn waves-effect waves-light green" type="submit">保存</button>
             </form>
         </div>
     </div>
