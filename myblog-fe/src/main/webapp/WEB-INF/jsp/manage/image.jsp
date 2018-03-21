@@ -16,26 +16,43 @@
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
-            <div class="carousel">
-                <c:forEach var="userImage" items="${userImages}">
-                    <div class="carousel-item black-text center">
-                        <img src="/images/user/${userImage}">
-                        <h6>${userImage}</h6>
-                    </div>
-                </c:forEach>
-            </div>
-            <div class="carousel">
-                <c:forEach var="articleImage" items="${articleImages}">
-                    <div class="carousel-item black-text center">
-                        <img src="/images/article/${articleImage}">
-                        <h6>${articleImage}</h6>
-                    </div>
-                </c:forEach>
-            </div>
+            <form action="/manage/image/delete" method="post">
+                <div class="carousel">
+                    <c:forEach var="userImage" items="${userImages}">
+                        <div class="carousel-item black-text center">
+                            <img src="/images/user/${userImage}">
+                            <p><label>
+                                <input type="checkbox" name="userImages" value="${userImage}"/>
+                                <span>${userImage}</span>
+                            </label></p>
+                        </div>
+                    </c:forEach>
+                </div>
+
+                <div class="carousel">
+                    <c:forEach var="articleImage" items="${articleImages}">
+                        <div class="carousel-item black-text center">
+                            <img src="/images/article/${articleImage}">
+                            <p><label>
+                                <input type="checkbox" name="articleImages" value="${articleImage}"/>
+                                <span>${articleImage}</span>
+                            </label></p>
+                        </div>
+                    </c:forEach>
+                </div>
+
+                <div class="center-align">
+                    <button class="btn waves-effect waves-light green" type="submit">删除</button>
+                </div>
+            </form>
+
+            <div class="divider"></div>
+
             <form name="uploadForm" method="POST" enctype="multipart/form-data" action="/manage/image">
                 用户图片:<input type="file" name="userImage" size="30"/>
                 文章图片:<input type="file" name="articleImage" size="30"/>
                 <input class="btn btn-primary" type="submit" name="submit" value="上传">
+                <button class="btn waves-effect waves-light green" type="submit">保存</button>
             </form>
         </div>
     </div>

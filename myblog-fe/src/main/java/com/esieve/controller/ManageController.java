@@ -277,13 +277,33 @@ public class ManageController {
         }
     }
 
-    //todo 图片删除操作
-//    @RequestMapping(value = "/image/delete/{userId}", method = RequestMethod.GET)
-//    public String deleteUser(@PathVariable("userId") Integer userId, RedirectAttributes attributes) {
-//        OperationResult result = userService.deleteUser(userId);
-//        attributes.addFlashAttribute("info", result.getInfo());
-//        return "redirect:/manage/user";
-//    }
+    private void deleteFile(String path) {
+        File file = new File(path);
+        file.delete();
+    }
+
+    @RequestMapping(value = "/image/delete", method = RequestMethod.POST)
+    public String deleteImage(HttpServletRequest request, RedirectAttributes attributes) {
+        String[] userImages = request.getParameterValues("userImages");
+        String[] articleImages = request.getParameterValues("articleImages");
+
+        if (userImages != null) {
+            for (String userImage :
+                    userImages) {
+                deleteFile(request.getServletContext().getRealPath(userImagePath) + userImage);
+            }
+        }
+
+        if (articleImages != null) {
+            for (String articleImage :
+                    articleImages) {
+                deleteFile(request.getServletContext().getRealPath(articleImagePath) + articleImage);
+            }
+        }
+
+        attributes.addFlashAttribute("info", "删除成功");
+        return "redirect:/manage/image";
+    }
 
     //用户的管理 超级用户无法修改个人信息
     //todo

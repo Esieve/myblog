@@ -43,7 +43,7 @@
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
-            <form id="loginForm" method="post" action="/manage/user/save/${user.userId}" onsubmit="return check()">
+            <form method="post" action="/manage/user/save/${user.userId}" onsubmit="return check()">
                 <div class="input-field col s6">
                     <i class="material-icons prefix">account_circle</i>
                     <input id="username" name="username" type="text" class="validate " value="${user.username}">
