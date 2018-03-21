@@ -51,7 +51,6 @@
     </script>
 </head>
 <body class="grey lighten-4">
-
 <div class="row">
     <div class="col s4"></div>
     <div class="col s4">
@@ -59,24 +58,24 @@
         <%@ page contentType="text/html;charset=UTF-8" language="java" %>
         <div class="card-panel hoverable">
             <div class="center-align" style="margin-bottom: 40px">
-                <h4><a href="blog" class="brand-logo indigo-text darken-3">Esieve's Blog</a></h4>
+                <h4><a href="blog" class="brand-logo indigo-text darken-3">${username}'s Blog</a></h4>
             </div>
 
-            <form id="loginForm" method="post" action="/login/submit" onsubmit="return check()">
+            <form method="post" action="/login/submit" onsubmit="return check()">
                 <div class="input-field">
                     <i class="material-icons prefix">account_circle</i>
                     <input id="username" name="username" type="text" class="validate">
                     <label for="username">用户名</label>
                 </div>
+
                 <div class="input-field">
                     <i class="material-icons prefix">lock</i>
                     <input id="password" name="password" type="password" class="validate">
                     <label for="password">密码</label>
                 </div>
+
                 <div class="center-align">
-                    <button class="btn waves-effect waves-light hoverable" type="submit" name="action">登录
-                        <i class="material-icons right">send</i>
-                    </button>
+                    <button class="btn waves-effect waves-light green hoverable" type="submit">登陆</button>
                 </div>
             </form>
         </div>
