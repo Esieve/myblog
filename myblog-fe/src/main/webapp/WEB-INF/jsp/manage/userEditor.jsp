@@ -94,7 +94,7 @@
                 </div>
                 <br><br><br><br>
 
-                <button class="btn waves-effect waves-light green" type="submit">保存</button>
+                <button class="btn waves-effect waves-light green hoverable" type="submit">保存</button>
             </form>
         </div>
     </div>

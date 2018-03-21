@@ -44,7 +44,7 @@
                     <textarea class="ckeditor" id="content" name="content">${article.content}</textarea>
                 </div>
                 <br>
-                <button class="btn waves-effect waves-light green" type="submit" name="action">保存</button>
+                <button class="btn waves-effect waves-light green hoverable" type="submit" name="action">保存</button>
             </form>
         </div>
     </div>

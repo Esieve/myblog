@@ -12,7 +12,7 @@
             <form action="/manage/about/save" method="post" onsubmit="return check()">
                 <textarea class="ckeditor" id="content" name="content">${about.content}</textarea>
                 <br>
-                <button class="btn waves-effect waves-light green" type="submit" name="action">保存</button>
+                <button class="btn waves-effect waves-light green hoverable" type="submit" name="action">保存</button>
             </form>
         </div>
     </div>

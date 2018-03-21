@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="center-align">
-                    <button class="btn waves-effect waves-light green" type="submit">删除</button>
+                    <button class="btn waves-effect waves-light green hoverable" type="submit">删除</button>
                 </div>
             </form>
 
@@ -70,7 +70,7 @@
                 </div>
 
                 <div class="center-align">
-                    <button class="btn waves-effect waves-light green" type="submit">上传</button>
+                    <button class="btn waves-effect waves-light green hoverable" type="submit">上传</button>
                 </div>
             </form>
         </div>

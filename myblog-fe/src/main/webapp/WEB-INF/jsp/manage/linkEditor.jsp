@@ -38,7 +38,7 @@
                 </div>
                 <br><br><br><br>
                 <div class="center">
-                    <button class="btn waves-effect waves-light green" type="submit">保存</button>
+                    <button class="btn waves-effect waves-light green hoverable" type="submit">保存</button>
                 </div>
             </form>
         </div>
