@@ -17,6 +17,8 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,6 +42,7 @@ import java.util.Optional;
 @Controller
 @RequestMapping("/manage")
 public class ManageController {
+    private final static Logger LOGGER = LoggerFactory.getLogger(ManageController.class);
 
     @Reference
     private ArticleService articleService;
@@ -218,11 +221,8 @@ public class ManageController {
     }
 
     //对图片的管理
-    @RequestMapping(value = "/image", method = {RequestMethod.GET, RequestMethod.POST})
-    public String showImagesAndUpload(HttpServletRequest request, Model model) {
-        String imageBasePath = request.getServletContext().getRealPath("images");
-        processUpload(request, imageBasePath);
-
+    @RequestMapping(value = "/image", method = RequestMethod.GET)
+    public String showImages(HttpServletRequest request, Model model) {
         String[] userImages = ImageUtil.getImages(request.getServletContext().getRealPath(userImagePath));
         String[] articleImages = ImageUtil.getImages(request.getServletContext().getRealPath(articleImagePath));
 
@@ -232,49 +232,48 @@ public class ManageController {
         return "manage/manage";
     }
 
-    private void processUpload(HttpServletRequest request, String imageBasePath) {
-        System.out.println("process upload");
+    private String processUpload(HttpServletRequest request) {
+        LOGGER.info("process upload");
         FileItemFactory factory = new DiskFileItemFactory();
         ServletFileUpload upload = new ServletFileUpload(factory);
         List<FileItem> items;
         try {
             items = upload.parseRequest(request);
         } catch (FileUploadException e) {
-            return;
-//			e.printStackTrace();
+            LOGGER.error("upload images error, parse request error, error {}", e);
+            return "上传失败";
         }
         if (items == null) {
-            return;
+            LOGGER.error("upload images error, no items");
+            return "上传失败";
         }
+
         Iterator<FileItem> itr = items.iterator();
         while (itr.hasNext()) {
             FileItem item = itr.next();
             if (item.isFormField()) {
-                System.out.println("error");
-            } else if ("userImage".equals(item.getFieldName())) {
-                try {
-                    String imageName = item.getName();
-                    String filePath = imageBasePath + File.separator
-                            + "user"
-                            + File.separator + imageName;
-                    System.out.println(filePath);
-                    item.write(new File(filePath));
-                } catch (Exception e) {
-                    e.printStackTrace();
+                LOGGER.error("upload images error, is form field");
+                continue;
+            }
+
+            try {
+                String imageName = item.getName();
+                if ("userImage".equals(item.getFieldName())) {
+                    item.write(new File(request.getServletContext().getRealPath(userImagePath) + imageName));
+                } else if ("articleImage".equals(item.getFieldName())) {
+                    item.write(new File(request.getServletContext().getRealPath(articleImagePath) + imageName));
                 }
-            } else if ("articleImage".equals(item.getFieldName())) {
-                try {
-                    String imageName = item.getName();
-                    String filePath = imageBasePath + File.separator
-                            + "article"
-                            + File.separator + imageName;
-                    System.out.println(filePath);
-                    item.write(new File(filePath));
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+            } catch (Exception e) {
+                LOGGER.error("upload images error, write error, error {}", e);
             }
         }
+        return "上传成功";
+    }
+
+    @RequestMapping(value = "/image/upload", method = RequestMethod.POST)
+    public String uploadImages(HttpServletRequest request, RedirectAttributes attributes) {
+        attributes.addFlashAttribute("info", processUpload(request));
+        return "redirect:/manage/image";
     }
 
     private void deleteFile(String path) {

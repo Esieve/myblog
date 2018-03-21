@@ -48,11 +48,30 @@
 
             <div class="divider"></div>
 
-            <form name="uploadForm" method="POST" enctype="multipart/form-data" action="/manage/image">
-                用户图片:<input type="file" name="userImage" size="30"/>
-                文章图片:<input type="file" name="articleImage" size="30"/>
-                <input class="btn btn-primary" type="submit" name="submit" value="上传">
-                <button class="btn waves-effect waves-light green" type="submit">保存</button>
+            <form method="POST" enctype="multipart/form-data" action="/manage/image/upload">
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>用户图片</span>
+                        <input type="file" multiple>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                    </div>
+                </div>
+
+                <div class="file-field input-field">
+                    <div class="btn">
+                        <span>文章图片</span>
+                        <input type="file" multiple>
+                    </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                    </div>
+                </div>
+
+                <div class="center-align">
+                    <button class="btn waves-effect waves-light green" type="submit">上传</button>
+                </div>
             </form>
         </div>
     </div>
