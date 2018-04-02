@@ -119,8 +119,8 @@
                 <version>3.7.0</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
-                    <source>1.9</source>
-                    <target>1.9</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
         </plugins>

@@ -11,6 +11,8 @@
 
     <artifactId>myblog-mt</artifactId>
 
+    <packaging>jar</packaging>
+
     <dependencies>
         <dependency>
             <groupId>com.esieve</groupId>
@@ -50,4 +52,48 @@
             <version>1.3.1</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>appassembler-maven-plugin</artifactId>
+                <version>1.10</version>
+                <configuration>
+                    <repositoryLayout>flat</repositoryLayout>
+                    <projectArtifactFirstInClassPath>true</projectArtifactFirstInClassPath>
+                    <!--<extraJvmArguments>-->
+                    <!--$(eval echo -e `export CURRENT_TIME=$(eval date +%Y%m%d%H%M%S); $JAVACMD -classpath $CLASSPATH $JAVA_OPTS com.xiaomi.utils.conf.ApplicationConfig app.jvm.arg`)-->
+                    <!--</extraJvmArguments>-->
+                    <programs>
+                        <program>
+                            <mainClass>com.esieve.article.service.ArticleServiceMain</mainClass>
+                            <id>ArticleService</id>
+                        </program>
+                        <program>
+                            <mainClass>com.esieve.category.service.CategoryServiceMain</mainClass>
+                            <id>CategoryService</id>
+                        </program>
+                        <program>
+                            <mainClass>com.esieve.link.service.LinkServiceMain</mainClass>
+                            <id>LinkService</id>
+                        </program>
+                        <program>
+                            <mainClass>com.esieve.user.service.UserServiceMain</mainClass>
+                            <id>UserService</id>
+                        </program>
+                    </programs>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assemble</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>assemble</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 </project>

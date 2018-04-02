@@ -1,0 +1,32 @@
+version: '2'
+services:
+  zookeeper:
+      image: zookeeper:latest
+      container_name: myblog-zookeeper
+      ports:
+        - "2181:2181"
+  mysql:
+    image: mysql:latest
+    container_name: myblog-mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "myblog"
+    ports:
+      - "3306:3306"
+  redis:
+    image: redis:latest
+    container_name: myblog-redis
+    ports:
+      - "6379:6379"
+  category:
+      build:
+        context: ./
+        dockerfile: src/main/java/com/esieve/category/Dockerfile
+      image: myblog-category
+      container_name: myblog-category
+      depends_on:
+        - mysql
+        - redis
+        - zookeeper
+      ports:
+        - "24442:24442"
