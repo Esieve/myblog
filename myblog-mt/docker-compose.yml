@@ -25,8 +25,8 @@ services:
       image: myblog-category
       container_name: myblog-category
       depends_on:
+        - zookeeper
         - mysql
         - redis
-        - zookeeper
       ports:
         - "24442:24442"
