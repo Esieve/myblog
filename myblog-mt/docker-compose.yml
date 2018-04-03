@@ -18,6 +18,18 @@ services:
     container_name: myblog-redis
     ports:
       - "6379:6379"
+  article:
+        build:
+          context: ./
+          dockerfile: src/main/java/com/esieve/article/Dockerfile
+        image: myblog-article
+        container_name: myblog-article
+        depends_on:
+          - zookeeper
+          - mysql
+          - redis
+        ports:
+          - "24441:24441"
   category:
       build:
         context: ./
@@ -30,3 +42,27 @@ services:
         - redis
       ports:
         - "24442:24442"
+  link:
+      build:
+        context: ./
+        dockerfile: src/main/java/com/esieve/link/Dockerfile
+      image: myblog-link
+      container_name: myblog-link
+      depends_on:
+        - zookeeper
+        - mysql
+        - redis
+      ports:
+        - "24443:24443"
+  user:
+      build:
+        context: ./
+        dockerfile: src/main/java/com/esieve/user/Dockerfile
+      image: myblog-user
+      container_name: myblog-user
+      depends_on:
+        - zookeeper
+        - mysql
+        - redis
+      ports:
+        - "24444:24444"
