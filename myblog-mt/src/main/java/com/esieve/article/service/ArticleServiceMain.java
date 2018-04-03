@@ -2,14 +2,18 @@ package com.esieve.article.service;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import java.io.IOException;
-
 public class ArticleServiceMain {
-    public static void main(String[] args) throws IOException {
+    private static Object lock = new Object();
+
+    public static void main(String[] args) throws InterruptedException {
         ClassPathXmlApplicationContext context =
                 new ClassPathXmlApplicationContext("ArticleService.xml", "service.xml");
         context.start();
 
-        System.in.read(); // 按任意键退出
+        while (true) {
+            synchronized (lock) {
+                lock.wait(); //等待，直到其它线程调用 lock.notify()
+            }
+        }
     }
 }
