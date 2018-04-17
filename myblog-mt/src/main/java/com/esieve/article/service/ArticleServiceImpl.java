@@ -61,7 +61,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public Article getNextArticle(int articleId) {
-        Article article = articleDao.getPreArticle(articleId);
+        Article article = articleDao.getNextArticle(articleId);
         if (article == null) {
             return new Article(-1, "这已经是最后一篇了");
         } else {
