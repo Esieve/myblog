@@ -23,7 +23,7 @@
         <div class="card hoverable">
             <div class="card-content">
                 <span class="card-title">${article.title}</span>
-                『${article.publishTime }』
+                ${article.publishTime }
                 <span>|</span>
                 <a href=/blog/category/${article.category.categoryId}>${article.category.categoryName}</a>
                 <span>|</span>
@@ -33,14 +33,15 @@
                 <p>${article.content}</p>
             </div>
             <div class="card-action">
+                修改于：${article.updateTime}
+                <br>
                 上一篇：<a href="/blog/article/${preArticle.articleId}"
                        <c:if test='${preArticle.articleId==-1}'>onclick="return false;"</c:if> >${preArticle.title}</a>
                 <br>
                 下一篇：<a href="/blog/article/${nextArticle.articleId}"
                        <c:if test='${nextArticle.articleId==-1}'>onclick="return false;"</c:if> >${nextArticle.title}</a>
                 <br>
-                转载注明：<a href="/blog/about">${article.user.username}</a>&gt;&gt;<a
-                    href="/blog/article/${article.articleId}">${article.title}</a>
+                转载请注明出处~
             </div>
         </div>
     </div>
