@@ -35,7 +35,7 @@
                                         ${article.title }
                                 </div>
                                 <div class="col s3">
-                                    <fmt:formatDate value="${article.pubDate}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                                    <fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
                                 </div>
                                 <div class="col s6">
                                     <a href="/manage/article/modify/${article.articleId}"

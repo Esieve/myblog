@@ -80,13 +80,13 @@ public class BlogController {
             session.setAttribute("biography", user.getBiography());
         }
 
-        // pagination
+        // pagination, get articles
         if (page == null || page == "") {
             page = "1";
         }
         Page pageUtil = new Page(Integer.parseInt(page), 4);
-        List<Article> articles = null;
-        String pageCode = null;
+        List<Article> articles;
+        String pageCode;
         if (search != null && !search.equals("")) {
             articles = articleService.searchArticles(search);
             pageCode = this.genPagination(articles.size(), Integer.parseInt(page), "&search=" + search);
@@ -94,6 +94,12 @@ public class BlogController {
             articles = articleService.pagination(pageUtil);
             int total = articleService.countArticleNum();
             pageCode = this.genPagination(total, Integer.parseInt(page), "");
+        }
+
+        // get categories, users
+        for (Article article : articles) {
+            article.setCategory(categoryService.getCategoryByCategoryId(article.getCategoryId()).getData());
+            article.setUser(userService.getUserByUserId(article.getUserId()).getData());
         }
 
         model.addAttribute("pageCode", pageCode);
@@ -150,7 +156,8 @@ public class BlogController {
             }
             Article preArticle = articleService.getPreArticle(articleId);
             Article nextArticle = articleService.getNextArticle(articleId);
-            model.addAttribute("articleId", articleId);
+            result.getData().setCategory(categoryService.getCategoryByCategoryId(result.getData().getCategoryId()).getData());
+            result.getData().setUser(userService.getUserByUserId(result.getData().getUserId()).getData());
             model.addAttribute("article", result.getData());
             model.addAttribute("preArticle", preArticle);
             model.addAttribute("nextArticle", nextArticle);

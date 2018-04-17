@@ -23,7 +23,7 @@
         <div class="card hoverable">
             <div class="card-content">
                 <span class="card-title">${article.title}</span>
-                『${article.pubDate }』
+                『${article.publishTime }』
                 <span>|</span>
                 <a href=/blog/category/${article.category.categoryId}>${article.category.categoryName}</a>
                 <span>|</span>

@@ -1,5 +1,8 @@
 package com.esieve.article.bean;
 
+import com.esieve.category.bean.Category;
+import com.esieve.user.bean.User;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -14,6 +17,9 @@ public class Article implements Serializable {
     private int clicks;
     private String image;
     private boolean isAbout;
+
+    private Category category;
+    private User user;
 
     public Article() {
     }
@@ -108,6 +114,22 @@ public class Article implements Serializable {
 
     public void setAbout(boolean about) {
         isAbout = about;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override

@@ -33,7 +33,7 @@
                 <c:forEach var="article" items="${articles}">
                     <li style="opacity: 0">
                         <table>
-                            <td>『${article.pubDate }』</td>
+                            <td>『${article.publishTime }』</td>
                             <td><a href="/blog/article/${article.articleId}">${article.title}</a></td>
                         </table>
                     </li>

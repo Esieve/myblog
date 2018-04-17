@@ -29,7 +29,7 @@
                             <tbody>
                             <c:forEach var="article" items="${articlesList[category.categoryId]}">
                                 <tr>
-                                    <td>『${article.pubDate }』</td>
+                                    <td>『${article.publishTime }』</td>
                                     <td><a href="/blog/article/${article.articleId}">${article.title}</a></td>
                                 </tr>
                             </c:forEach>
