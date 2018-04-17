@@ -4,6 +4,7 @@ import com.alibaba.dubbo.config.annotation.Service;
 import com.esieve.article.bean.Article;
 import com.esieve.article.bean.Page;
 import com.esieve.article.dao.ArticleDao;
+import com.esieve.article.dao.RedisDao;
 import com.esieve.common.bean.OperationResult;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,6 +18,9 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Autowired
     private ArticleDao articleDao;
+
+    @Autowired
+    private RedisDao redisDao;
 
     @Override
     public Article getAbout() {
@@ -73,12 +77,20 @@ public class ArticleServiceImpl implements ArticleService {
     public OperationResult<Article> getArticleByArticleId(int articleId) {
         OperationResult<Article> operationResult = new OperationResult<>();
 
-        Article article = articleDao.getArticleByArticleId(articleId);
+        Article article = redisDao.getArticleByIdFromCache(articleId);
+        if (article != null) {
+            operationResult.setSuccess(true);
+            operationResult.setData(article);
+            return operationResult;
+        }
+
+        article = articleDao.getArticleByArticleId(articleId);
         if (article == null) {
-            LOGGER.error("get article error, article {}", article);
+            LOGGER.error("get article error, articleId {}", articleId);
             operationResult.setSuccess(false);
             operationResult.setInfo("该文章不存在");
         } else {
+            redisDao.saveArticleToCache(article);
             operationResult.setSuccess(true);
             operationResult.setData(article);
         }
