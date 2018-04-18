@@ -4,7 +4,6 @@ USE myblog;
 
 CREATE TABLE user (
   user_id    INT         NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  #   user_type INT DEFAULT 0 COMMENT '0代表普通用户，1代表管理员',
   username   VARCHAR(20) NOT NULL UNIQUE,
   password   VARCHAR(50) NOT NULL,
   image      VARCHAR(50)          DEFAULT NULL
@@ -58,7 +57,5 @@ CREATE TABLE link (
   ENGINE = INNODB
   DEFAULT CHARSET = UTF8;
 
-#todo
-# INSERT INTO category VALUES(NULL,"about");
-# INSERT INTO user VALUES(NULL,1,'admin','ICy5YqxZB1uWSwcVLSNLcA==','ted.jpg');
-# INSERT INTO article VALUES(NULL,1,1,"about",1,NOW(),0,"root");
+INSERT INTO user VALUES (NULL, 'admin', 'ISMvKXpXpadDiUoOSoAfww==', 'ted.jpg', 'mountain.jsp', 'Introduce yourself...');
+INSERT INTO article (content, publish_time, update_time, is_about) VALUES ("about", now(), now(), 1);
