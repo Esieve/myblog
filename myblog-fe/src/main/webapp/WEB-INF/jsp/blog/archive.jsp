@@ -7,16 +7,6 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ include file="/WEB-INF/jsp/common/tag.jsp" %>
-<script type="text/javascript">
-    var options = [
-        {
-            selector: '#archive', offset: 0, callback: function (el) {
-                Materialize.showStaggeredList($(el));
-            }
-        },
-    ];
-    Materialize.scrollFire(options);
-</script>
 <div class="row">
     <div class="col s12">
         <nav class="indigo lighten-1">
@@ -29,20 +19,21 @@
         </nav>
         <br>
         <div class="card-panel hoverable">
-            <ul id="archive">
-                <li>
-                    <table class="responsive-table centered">
-                        <tbody>
-                        <c:forEach var="article" items="${articles}">
-                            <tr>
-                                <td><a href="/blog/article/${article.articleId}">${article.title}</a></td>
-                                <td><fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                            </tr>
-                        </c:forEach>
-                        </tbody>
-                    </table>
-                </li>
-            </ul>
+            <c:forEach var="entry" items="${articles}">
+                <div class="chip">${entry.key}</div>
+
+                <table class="responsive-table centered striped">
+                    <tbody>
+                    <c:forEach var="article" items="${entry.value}">
+                        <tr>
+                            <td><a href="/blog/article/${article.articleId}">${article.title}</a></td>
+                            <td><fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+                <br>
+            </c:forEach>
         </div>
     </div>
 </div>

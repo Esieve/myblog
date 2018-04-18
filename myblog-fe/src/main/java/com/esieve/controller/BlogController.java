@@ -25,10 +25,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 /**
  * Created by 张秦遥 on 2017/4/6/0006.
@@ -194,11 +192,25 @@ public class BlogController {
         return "blog/blog";
     }
 
-    //归档列表展示 todo 按月份归档，增加分页
+	//归档列表展示 todo 增加分页
     @RequestMapping(value = "/archive", method = RequestMethod.GET)
     public String showArchiveView(Model model) {
         List<Article> articles = articleService.getArticles();
-        model.addAttribute("articles", articles);
+
+	    Map<String, List<Article>> articlesByDate = new LinkedHashMap<>();
+	    for (Article article : articles) {
+		    SimpleDateFormat smt = new SimpleDateFormat("yyyy-MM");
+		    String publishTime = smt.format(article.getPublishTime());
+		    if (articlesByDate.containsKey(publishTime)) {
+			    articlesByDate.get(publishTime).add(article);
+		    } else {
+			    articlesByDate.put(publishTime, new ArrayList<Article>() {{
+				    add(article);
+			    }});
+		    }
+	    }
+
+	    model.addAttribute("articles", articlesByDate);
         model.addAttribute("mainPage", "archive.jsp");
         return "blog/blog";
     }
