@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/WEB-INF/jsp/common/tag.jsp" %>
 <c:forEach var="article" items="${articles}">
     <div class="row">
         <div class="col s12">
@@ -16,7 +16,7 @@
                     <span class="card-title">${article.title}</span>
                 </div>
                 <div class="card-content">
-                        ${article.publishTime }
+                    <fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
                     <span>|</span>
                     <a href="/blog/category/${article.category.categoryId}">${article.category.categoryName}</a>
                     <span>|</span>

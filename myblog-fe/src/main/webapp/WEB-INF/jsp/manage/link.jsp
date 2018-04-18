@@ -19,7 +19,7 @@
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
-            <table class="centered">
+            <table class="responsive-table centered">
                 <thead>
                 <tr>
                     <th>链接名称</th>

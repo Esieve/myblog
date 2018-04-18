@@ -19,31 +19,32 @@
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
-            <div class="row center">
-                <div class="col s4">名称</div>
-                <div class="col s1">时间</div>
-                <div class="col s7">操作</div>
-            </div>
-            <hr>
+            <table class="responsive-table centered">
+                <thead>
+                <th>名称</th>
+                <th>时间</th>
+                <th>操作</th>
+                </thead>
+            </table>
 
             <ul class="collapsible popout">
                 <c:forEach var="article" items="${articles}">
                     <li>
                         <div class="collapsible-header">
-                            <div class="row center">
-                                <div class="col s3">
-                                        ${article.title }
-                                </div>
-                                <div class="col s3">
-                                    <fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
-                                </div>
-                                <div class="col s6">
-                                    <a href="/manage/article/modify/${article.articleId}"
-                                       class="waves-effect waves-light btn green hoverable">修改</a>
-                                    <a class="waves-effect waves-light btn red hoverable"
-                                       href="/manage/article/delete/${article.articleId}" onclick="return check()">删除</a>
-                                </div>
-                            </div>
+                            <table class="responsive-table centered">
+                                <tbody>
+                                <tr>
+                                    <td>${article.title }</td>
+                                    <td><fmt:formatDate value="${article.publishTime}"
+                                                        pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                                    <td><a href="/manage/article/modify/${article.articleId}"
+                                           class="waves-effect waves-light btn green hoverable">修改</a>
+                                        <a class="waves-effect waves-light btn red hoverable"
+                                           href="/manage/article/delete/${article.articleId}" onclick="return check()">删除</a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
                         </div>
                         <div class="collapsible-body">
                             <p>${article.content}</p>
@@ -59,3 +60,8 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.collapsible').collapsible();
+    });
+</script>

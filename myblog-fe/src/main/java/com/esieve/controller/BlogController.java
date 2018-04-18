@@ -206,7 +206,6 @@ public class BlogController {
     //消息页面的展示
     @RequestMapping(value = "/message", method = RequestMethod.GET)
     public String showMessageView(Model model) {
-//        model.addAttribute("articleId", 0); todo remove?
         model.addAttribute("mainPage", "message.jsp");
         return "blog/blog";
     }

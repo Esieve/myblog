@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/WEB-INF/jsp/common/tag.jsp" %>
 <div class="row">
     <div class="col s12">
         <nav class="indigo lighten-1">
@@ -25,20 +25,25 @@
                             ${category.categoryName}<span class="badge">${category.articleNum}</span>
                     </div>
                     <div class="collapsible-body">
-                        <table>
+                        <table class="responsive-table centered">
                             <tbody>
                             <c:forEach var="article" items="${articlesList[category.categoryId]}">
                                 <tr>
-                                    <td>『${article.publishTime }』</td>
                                     <td><a href="/blog/article/${article.articleId}">${article.title}</a></td>
+                                    <td><fmt:formatDate value="${article.publishTime}"
+                                                        pattern="yyyy-MM-dd HH:mm:ss"/></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
                         </table>
-
                     </div>
                 </li>
             </c:forEach>
         </ul>
     </div>
 </div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('.collapsible').collapsible();
+    });
+</script>

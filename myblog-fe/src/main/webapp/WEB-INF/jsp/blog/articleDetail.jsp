@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/WEB-INF/jsp/common/tag.jsp" %>
 <div class="row">
     <div class="col s12">
         <nav class="indigo lighten-1">
@@ -23,7 +23,7 @@
         <div class="card hoverable">
             <div class="card-content">
                 <span class="card-title">${article.title}</span>
-                ${article.publishTime }
+                <fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
                 <span>|</span>
                 <a href=/blog/category/${article.category.categoryId}>${article.category.categoryName}</a>
                 <span>|</span>
@@ -33,7 +33,7 @@
                 <p>${article.content}</p>
             </div>
             <div class="card-action">
-                修改于：${article.updateTime}
+                修改于：<fmt:formatDate value="${article.updateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
                 <br>
                 上一篇：<a href="/blog/article/${preArticle.articleId}"
                        <c:if test='${preArticle.articleId==-1}'>onclick="return false;"</c:if> >${preArticle.title}</a>

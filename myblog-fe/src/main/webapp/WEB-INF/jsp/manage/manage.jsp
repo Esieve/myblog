@@ -9,7 +9,6 @@
 <html>
 <head>
     <%@ include file="/WEB-INF/jsp/common/head.jsp" %>
-
 </head>
 <body class="grey lighten-4">
 

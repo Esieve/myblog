@@ -6,7 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ include file="/WEB-INF/jsp/common/tag.jsp" %>
 <script type="text/javascript">
     var options = [
         {
@@ -30,14 +30,18 @@
         <br>
         <div class="card-panel hoverable">
             <ul id="archive">
-                <c:forEach var="article" items="${articles}">
-                    <li style="opacity: 0">
-                        <table>
-                            <td>『${article.publishTime }』</td>
-                            <td><a href="/blog/article/${article.articleId}">${article.title}</a></td>
-                        </table>
-                    </li>
-                </c:forEach>
+                <li>
+                    <table class="responsive-table centered">
+                        <tbody>
+                        <c:forEach var="article" items="${articles}">
+                            <tr>
+                                <td><a href="/blog/article/${article.articleId}">${article.title}</a></td>
+                                <td><fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </li>
             </ul>
         </div>
     </div>
