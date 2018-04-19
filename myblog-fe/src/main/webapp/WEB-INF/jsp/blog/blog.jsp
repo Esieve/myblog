@@ -93,8 +93,9 @@
                         <span class="card-title">最近文章</span>
                         <table>
                             <c:forEach var="recentArticle" items="${recentArticles}">
-                                <tr class="hoverable">
-                                    <td><a class="white-text"
+                                <tr>
+                                    <td>
+                                        <a class="white-text"
                                            href="/blog/article/${recentArticle.articleId}">${recentArticle.title}</a>
                                     </td>
                                 </tr>
@@ -108,8 +109,9 @@
                         <span class="card-title">最多浏览文章</span>
                         <table>
                             <c:forEach var="mostViewedArticle" items="${mostViewedArticles}">
-                                <tr class="hoverable">
-                                    <td><a class="white-text"
+                                <tr>
+                                    <td>
+                                        <a class="white-text"
                                            href="/blog/article/${mostViewedArticle.articleId}">${mostViewedArticle.title}</a>
                                     </td>
                                 </tr>
@@ -123,9 +125,11 @@
                         <span class="card-title">最近回复</span>
                         <table>
                             <c:forEach var="recentMessage" items="${recentMessages}">
-                                <tr class="hoverable">
-                                    <td><a class="white-text"
-                                           href="message?action=leaveMessage">${recentMessage.content}</a></td>
+                                <tr>
+                                    <td>
+                                        <a class="white-text"
+                                           href="message?action=leaveMessage">${recentMessage.content}</a>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </table>
