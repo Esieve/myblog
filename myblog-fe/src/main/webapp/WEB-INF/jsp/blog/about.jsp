@@ -17,8 +17,9 @@
             </div>
         </nav>
         <br>
-        <div class="card-panel hoverable">
-            <span>${about.content}</span>
+        <div class="card hoverable">
+            <div class="card-content">${about.content}</div>
+            <div class="card-action">修改于：${about.updateTime}</div>
         </div>
     </div>
 </div>

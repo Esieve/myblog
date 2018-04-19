@@ -25,7 +25,7 @@
                             ${category.categoryName}<span class="badge">${category.articleNum}</span>
                     </div>
                     <div class="collapsible-body">
-                        <table class="responsive-table centered">
+                        <table class="responsive-table centered striped">
                             <tbody>
                             <c:forEach var="article" items="${articlesList[category.categoryId]}">
                                 <tr>

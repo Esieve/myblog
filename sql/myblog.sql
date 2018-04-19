@@ -57,5 +57,5 @@ CREATE TABLE link (
   ENGINE = INNODB
   DEFAULT CHARSET = UTF8;
 
-INSERT INTO user VALUES (NULL, 'admin', 'ISMvKXpXpadDiUoOSoAfww==', 'ted.jpg', 'mountain.jsp', 'Introduce yourself...');
-INSERT INTO article (content, publish_time, update_time, is_about) VALUES ("about", now(), now(), 1);
+INSERT INTO user VALUES (NULL, 'admin', 'ISMvKXpXpadDiUoOSoAfww==', 'ted.jpg', 'mountain.jpg', 'Introduce yourself...');
+INSERT INTO article (title, content, publish_time, update_time, is_about) VALUES ("about", "about", now(), now(), 1);

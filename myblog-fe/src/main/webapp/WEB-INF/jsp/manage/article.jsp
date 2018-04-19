@@ -19,7 +19,7 @@
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
-            <table class="responsive-table centered">
+            <table class="responsive-table centered striped">
                 <thead>
                 <th>名称</th>
                 <th>时间</th>
@@ -31,7 +31,7 @@
                 <c:forEach var="article" items="${articles}">
                     <li>
                         <div class="collapsible-header">
-                            <table class="responsive-table centered">
+                            <table class="responsive-table centered striped">
                                 <tbody>
                                 <tr>
                                     <td>${article.title }</td>

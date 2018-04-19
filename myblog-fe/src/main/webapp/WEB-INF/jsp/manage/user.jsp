@@ -25,7 +25,7 @@
 <div class="row">
     <div class="col s12">
         <div class="card-panel">
-            <table class="responsive-table centered">
+            <table class="responsive-table centered striped">
                 <thead>
                 <tr>
                     <th>头像</th>
