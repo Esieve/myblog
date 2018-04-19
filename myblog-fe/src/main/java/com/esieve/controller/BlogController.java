@@ -200,6 +200,7 @@ public class BlogController {
 	    Map<String, List<Article>> articlesByDate = new LinkedHashMap<>();
 	    for (Article article : articles) {
 		    SimpleDateFormat smt = new SimpleDateFormat("yyyy-MM");
+		    smt.setTimeZone(TimeZone.getTimeZone("Asia/Shanghai"));
 		    String publishTime = smt.format(article.getPublishTime());
 		    if (articlesByDate.containsKey(publishTime)) {
 			    articlesByDate.get(publishTime).add(article);

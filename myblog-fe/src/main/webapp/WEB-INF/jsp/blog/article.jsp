@@ -16,7 +16,7 @@
                     <span class="card-title">${article.title}</span>
                 </div>
                 <div class="card-content">
-                    <fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                    <fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss" timeZone="CCT"/>
                     <span>|</span>
                     <a href="/blog/category/${article.category.categoryId}">${article.category.categoryName}</a>
                     <span>|</span>

@@ -35,8 +35,8 @@
                                 <tbody>
                                 <tr>
                                     <td>${article.title }</td>
-                                    <td><fmt:formatDate value="${article.publishTime}"
-                                                        pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                                    <td><fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"
+                                                        timeZone="CCT"/></td>
                                     <td><a href="/manage/article/modify/${article.articleId}"
                                            class="waves-effect waves-light btn green hoverable">修改</a>
                                         <a class="waves-effect waves-light btn red hoverable"

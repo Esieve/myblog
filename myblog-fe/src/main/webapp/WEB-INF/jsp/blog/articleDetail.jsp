@@ -23,7 +23,7 @@
         <div class="card hoverable">
             <div class="card-content">
                 <span class="card-title">${article.title}</span>
-                <fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                <fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss" timeZone="CCT"/>
                 <span>|</span>
                 <a href=/blog/category/${article.category.categoryId}>${article.category.categoryName}</a>
                 <span>|</span>
@@ -33,7 +33,7 @@
                 <p>${article.content}</p>
             </div>
             <div class="card-action">
-                修改于：<fmt:formatDate value="${article.updateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+                修改于：<fmt:formatDate value="${article.updateTime}" pattern="yyyy-MM-dd HH:mm:ss" timeZone="CCT"/>
                 <br>
                 上一篇：<a href="/blog/article/${preArticle.articleId}"
                        <c:if test='${preArticle.articleId==-1}'>onclick="return false;"</c:if> >${preArticle.title}</a>

@@ -30,8 +30,8 @@
                             <c:forEach var="article" items="${articlesList[category.categoryId]}">
                                 <tr>
                                     <td><a href="/blog/article/${article.articleId}">${article.title}</a></td>
-                                    <td><fmt:formatDate value="${article.publishTime}"
-                                                        pattern="yyyy-MM-dd HH:mm:ss"/></td>
+                                    <td><fmt:formatDate value="${article.publishTime}" pattern="yyyy-MM-dd HH:mm:ss"
+                                                        timeZone="CCT"/></td>
                                 </tr>
                             </c:forEach>
                             </tbody>
